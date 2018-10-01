@@ -10,13 +10,17 @@ public class TimerCounting : MonoBehaviour
 
     public float startTime;
 
-    
+    public GameObject ball;
+
+    //public GameObject launchprefab;
 
     // Use this for initialization
     void Start()
     {
-        Time.timeScale = 1;
-       
+       Time.timeScale = 1;
+        ball.GetComponent<Rigidbody>().useGravity = false;
+        ball.GetComponent<Ball>().enabled = false;
+        //launchprefab.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,6 +44,9 @@ public class TimerCounting : MonoBehaviour
         if (ifstartscounting.battlestarts)
         {
             startTime -= Time.deltaTime;
+            ball.GetComponent<Rigidbody>().useGravity = true;
+            ball.GetComponent<Ball>().enabled = true;
+
         }
        
 
