@@ -14,8 +14,16 @@ public class Player1Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(moveSpeed*Input.GetAxis("Horizontal")*Time.deltaTime, 0f, moveSpeed*Input.GetAxis("Vertical")*Time.deltaTime);
-        DoAttack();
+        GameObject timeup = GameObject.Find("countdownTimer");
+
+        CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
+
+        if (ifstartscounting.battlestarts)
+        {
+            transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
+            DoAttack();
+        }
+           
 	}
 
     void DoAttack()
