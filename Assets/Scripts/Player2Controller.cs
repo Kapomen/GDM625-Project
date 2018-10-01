@@ -17,20 +17,28 @@ public class Player2Controller : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveSpeed * Input.GetAxis("Horizontal2") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical2") * Time.deltaTime);
+        GameObject timeup = GameObject.Find("countdownTimer");
 
-        if (Input.GetKey(KeyCode.M))
+        CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
+
+        if (ifstartscounting.battlestarts)
         {
-            DoAttack();
+            transform.Translate(moveSpeed * Input.GetAxis("Horizontal2") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical2") * Time.deltaTime);
+
+            if (Input.GetKey(KeyCode.M))
+            {
+                DoAttack();
+            }
+            else if (Input.GetKey(KeyCode.N))
+            {
+                DoDash();
+            }
+            else
+            {
+                DoNothing();
+            }
         }
-        else if (Input.GetKey(KeyCode.N))
-        {
-            DoDash();
-        }
-        else
-        {
-            DoNothing();
-        }
+            
     }
 
     void DoAttack()
