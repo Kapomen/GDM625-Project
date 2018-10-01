@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
-    public float thrust;
-    public Rigidbody rb;
+    //public float thrust;
+    //public Rigidbody rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
 
+        //rb.velocity = new Vector3(thrust, 0, 0);
         //start motion
-        rb.AddForce(transform.forward * thrust);
+        //rb.AddForce(transform.forward * thrust);
     }
 
     void FixedUpdate()
