@@ -45,6 +45,6 @@ public class Player2Controller : MonoBehaviour {
 
     void DoNothing() {
         if (PlayerIsAttacking == true) { PlayerIsAttacking = false; }
-        gameObject.GetComponent<Renderer>().material.color = Color.red;
+        gameObject.GetComponent<Renderer>().material.color = Color.blue;
     } //end DoNothing
 }
