@@ -10,6 +10,7 @@ public class TimerCounting : MonoBehaviour
 
     public float startTime;
 
+    
 
     // Use this for initialization
     void Start()
@@ -32,7 +33,15 @@ public class TimerCounting : MonoBehaviour
         gamepausechecking ifpaused = scenepause.GetComponent<gamepausechecking>();
         */
 
-        startTime -= Time.deltaTime;
+        GameObject timeup = GameObject.Find("countdownTimer");
+
+        CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
+
+        if (ifstartscounting.battlestarts)
+        {
+            startTime -= Time.deltaTime;
+        }
+       
 
 
         string minutes = Mathf.Floor(startTime / 60).ToString("00");
