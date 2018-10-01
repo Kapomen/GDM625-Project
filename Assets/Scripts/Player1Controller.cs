@@ -5,16 +5,17 @@ using UnityEngine;
 public class Player1Controller : MonoBehaviour {
 
     private bool PlayerIsAttacking;
+    private bool PlayerIsDashing;
 
     public float moveSpeed = 5f;
-
     // Use this for initialization
 	void Start () {
         PlayerIsAttacking = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         GameObject timeup = GameObject.Find("countdownTimer");
 
         CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
@@ -22,24 +23,37 @@ public class Player1Controller : MonoBehaviour {
         if (ifstartscounting.battlestarts)
         {
             transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
-            DoAttack();
+
+            if (Input.GetKey(KeyCode.Q))
+            {
+                DoAttack();
+            }
+            else if (Input.GetKey(KeyCode.LeftShift))
+            {
+                DoDash();
+            }
+            else
+            {
+                DoNothing();
+            }
         }
-           
-	}
+
+    } //end Update
 
     void DoAttack()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            if (PlayerIsAttacking == false) { PlayerIsAttacking = true; }
-            gameObject.GetComponent<Renderer>().material.color = Color.green;
-        }
-        else
-        {
-            if (PlayerIsAttacking == true) { PlayerIsAttacking = false; }
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
-        }
+        if (PlayerIsAttacking == false) { PlayerIsAttacking = true; }
+        gameObject.GetComponent<Renderer>().material.color = Color.green;
+    } //end DoAttack
 
-    }
-    
-}
+    void DoDash()
+    {
+        print("Dashing");
+    } //end DoSah
+
+    void DoNothing()
+    {
+        if (PlayerIsAttacking == true) { PlayerIsAttacking = false; }
+        gameObject.GetComponent<Renderer>().material.color = Color.red;
+    } //end DoNothing
+}  //end Player1Controller class
