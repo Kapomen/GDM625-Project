@@ -13,14 +13,15 @@ public class Projectile : MonoBehaviour {
 	void Update () {
 		
 	}
-
+  
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Player")
         {
-            transform.position = collision.gameObject.transform.position + new Vector3(0, 3, 0);
+            transform.position = collision.gameObject.transform.position + new Vector3(0, 2, 0);
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         
     }
+    
 }
