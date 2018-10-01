@@ -19,12 +19,12 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Border
+  - Ball
+  - Blocks
+  - Pickups
+  - Environment
+  - Players
   - 
   - 
   - 

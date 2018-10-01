@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Player1Controller : MonoBehaviour {
 
+    private bool PlayerIsAttacking;
 
     public float moveSpeed = 5f;
     // Use this for initialization
 	void Start () {
-        
+        PlayerIsAttacking = false;
 	}
 	
 	// Update is called once per frame
@@ -21,10 +22,12 @@ public class Player1Controller : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.Q))
         {
+            if (PlayerIsAttacking == false) { PlayerIsAttacking = true; }
             gameObject.GetComponent<Renderer>().material.color = Color.green;
         }
         else
         {
+            if (PlayerIsAttacking == true) { PlayerIsAttacking = false; }
             gameObject.GetComponent<Renderer>().material.color = Color.red;
         }
 
