@@ -9,11 +9,13 @@ public class CountdownTimer : MonoBehaviour {
     public Text countdownText;
     public bool battlestarts = false;
     public float intervals = 0;
+    public GameObject launch;
 
     // Use this for initialization
     void Start()
     {
         StartCoroutine("LoseTime");
+        launch.SetActive(true);
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class CountdownTimer : MonoBehaviour {
             {
                 countdownText.text = "";
                 intervals = 1;
+                launch.SetActive(false);
             }
         }
     }

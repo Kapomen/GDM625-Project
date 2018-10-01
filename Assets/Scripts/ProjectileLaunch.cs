@@ -25,11 +25,11 @@ public class ProjectileLaunch : MonoBehaviour {
 
             if (rand == 0)
             {
-                projectile.GetComponent<Rigidbody>().velocity = new Vector3(-5f, 0, 0);
+                projectile.GetComponent<Rigidbody>().velocity = new Vector3(-5f, -1f, 0);
             }
             else if (rand == 1)
             {
-                projectile.GetComponent<Rigidbody>().velocity = new Vector3(5f, 0, 0);
+                projectile.GetComponent<Rigidbody>().velocity = new Vector3(5f, -1f, 0);
             }
         }
             
