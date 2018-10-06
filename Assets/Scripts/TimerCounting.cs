@@ -54,7 +54,7 @@ public class TimerCounting : MonoBehaviour
 
         if (startTime <= 0)
         {
-
+            
             timerText.text = "00" + ":" + "00";
             ifpaused.paused = true;
             if (!resultMenu.activeInHierarchy)
