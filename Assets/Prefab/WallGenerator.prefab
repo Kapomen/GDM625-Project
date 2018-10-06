@@ -51,7 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2d4edfe1f412e448b5bb90bf891d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block1: {fileID: 1071741853669296, guid: fb75b8a4033d7ef4eba3031183e18186, type: 2}
+  WoodCrate: {fileID: 0}
+  PlayerCrest: {fileID: 1808975684496310, guid: 03a54c484f3f8cc4d9abf5bba6ad17db,
+    type: 2}
   wallWidth: 10
   wallHeight: 10
   spawnSpeed: 0
