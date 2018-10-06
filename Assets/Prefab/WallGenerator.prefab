@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514952793280356}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 14, y: 3, z: 4.5}
+  m_LocalPosition: {x: -14, y: 3, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2d4edfe1f412e448b5bb90bf891d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WoodCrate: {fileID: 0}
-  PlayerCrest: {fileID: 1808975684496310, guid: 03a54c484f3f8cc4d9abf5bba6ad17db,
+  WoodCrate: {fileID: 1091537548795670, guid: d107af6e11321224bbb6bd308b87af4e, type: 2}
+  PlayerCrest: {fileID: 1669335702765064, guid: 4a51e6b7b2e7361448b2f353b419e264,
     type: 2}
   wallWidth: 10
   wallHeight: 10
