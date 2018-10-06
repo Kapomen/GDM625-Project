@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3244,6 +3244,18 @@ Prefab:
       propertyPath: m_Name
       value: WallGenerator (P2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114115374141030364, guid: 53c02e61fd8aab640a4c837de255d039,
+        type: 2}
+      propertyPath: WoodCrate
+      value: 
+      objectReference: {fileID: 1091537548795670, guid: d107af6e11321224bbb6bd308b87af4e,
+        type: 2}
+    - target: {fileID: 114115374141030364, guid: 53c02e61fd8aab640a4c837de255d039,
+        type: 2}
+      propertyPath: PlayerCrest
+      value: 
+      objectReference: {fileID: 1808975684496310, guid: 03a54c484f3f8cc4d9abf5bba6ad17db,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c02e61fd8aab640a4c837de255d039, type: 2}
   m_IsPrefabAsset: 0
