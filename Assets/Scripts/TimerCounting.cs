@@ -12,6 +12,8 @@ public class TimerCounting : MonoBehaviour
 
     public GameObject ball;
 
+    public GameObject resultMenu;
+
     //public GameObject launchprefab;
 
     // Use this for initialization
@@ -21,6 +23,7 @@ public class TimerCounting : MonoBehaviour
         ball.GetComponent<Rigidbody>().useGravity = false;
         ball.GetComponent<Ball>().enabled = false;
         //launchprefab.SetActive(false);
+        resultMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,11 +34,11 @@ public class TimerCounting : MonoBehaviour
 
     void UpdateTimer()
     {
-        /*
+        
         GameObject scenepause = GameObject.Find("SceneManager");
 
         gamepausechecking ifpaused = scenepause.GetComponent<gamepausechecking>();
-        */
+        
 
         GameObject timeup = GameObject.Find("countdownTimer");
 
@@ -48,8 +51,23 @@ public class TimerCounting : MonoBehaviour
             ball.GetComponent<Ball>().enabled = true;
 
         }
-       
 
+        if (startTime <= 0)
+        {
+
+            timerText.text = "00" + ":" + "00";
+            ifpaused.paused = true;
+            if (!resultMenu.activeInHierarchy)
+            {
+                resultMenu.SetActive(true);
+                ifpaused.pausebutton.SetActive(false);
+                ifpaused.resetbutton.SetActive(false);
+            }
+        }
+        else
+        {
+            resultMenu.SetActive(false);
+        }
 
         string minutes = Mathf.Floor(startTime / 60).ToString("00");
         string seconds = Mathf.Floor(startTime % 60).ToString("00");
