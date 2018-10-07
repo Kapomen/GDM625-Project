@@ -62,7 +62,7 @@ public class GameManager : MonoSingleton<GameManager>
 	void Update () {
         if (timerZero && !winnerSet)
         {
-            CompareBlocksDestroyed();
+            DeclareWinner();
             SetEndMenu();
             winnerSet = true;
         }
@@ -103,46 +103,61 @@ public class GameManager : MonoSingleton<GameManager>
         }
     } //end BlockDestroyed
 
-    public void CompareBlocksDestroyed()
+    public void DeclareWinner()
     {
         if (BlocksDestroyed_P1 == BlocksDestroyed_P2) {
             if (CrestsDestroyed_P1 == CrestsDestroyed_P2) {
                 print("** TIE! **");
+
+                // We will need to either:
+                // A) Declare an official tie through UI (both knights play defeat animation)
+                // B) Reset the Players and the Ball to start positions and relaunch ball for a tiebreaker. 
+
+                //winnerSet = true;
                 print(winnerIsPlayer1); //returns false - 'Defaults to P2 Win'
             } else if (CrestsDestroyed_P1 < CrestsDestroyed_P2) {
                 winnerIsPlayer1 = true;
-                //winnerSet = true;
             } else {
                 winnerIsPlayer1 = false;
-                //winnerSet = true;
             } //end else
   
             print("TIE BREAKER");
         } else if (BlocksDestroyed_P1 < BlocksDestroyed_P2) {
             winnerIsPlayer1 = true;
-            //winnerSet = true;
-
             print("** PLAYER 1 WINS! **");
         } else {
             winnerIsPlayer1 = false;
-            //winnerSet = true;
-
             print("** PLAYER 2 WINS! **");
         } //end else
     } //CompareBlocksDestroyed
 
     private void SetEndMenu()
     {
+        string winner;
+
+        if (winnerIsPlayer1) {
+            winner = "Player 1 Wins!";
+        } else {
+            winner = "Player 2 Wins!";
+        } //end else
+
         gamepausechecking ifpaused = sceneManager.GetComponent<gamepausechecking>();
         ifpaused.paused = true;
 
         if (!resultMenu.activeInHierarchy)
         {
             resultMenu.SetActive(true);
+            
             ifpaused.pausebutton.SetActive(false);
             ifpaused.resetbutton.SetActive(false);
-        } else {
+
+            // Sicheng - Use the winner string value to set the text for the ResultsText UI
+
+            print(winner);
+        }
+        else {
             resultMenu.SetActive(false);
+
             print("EndBattle() else fired");
         }
     } //end EndBattle

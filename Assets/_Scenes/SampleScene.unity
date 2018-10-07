@@ -1388,7 +1388,7 @@ GameObject:
   - component: {fileID: 576345869}
   - component: {fileID: 576345868}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2679,7 +2679,7 @@ GameObject:
   - component: {fileID: 1261227151}
   - component: {fileID: 1261227150}
   m_Layer: 5
-  m_Name: winning
+  m_Name: ResultsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
