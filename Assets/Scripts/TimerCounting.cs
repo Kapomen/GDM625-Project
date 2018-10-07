@@ -7,6 +7,7 @@ public class TimerCounting : MonoBehaviour
 {
     public Text timerText;
     public float startTime;
+    private bool timerAtZero;
 
     public GameObject ball;
 
@@ -22,13 +23,17 @@ public class TimerCounting : MonoBehaviour
         ball.GetComponent<Ball>().enabled = false;
         //launchprefab.SetActive(false);
         resultMenu.SetActive(false);
-    }
+
+        timerAtZero = false;
+    } //end Start
 
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer();
-    }
+        if (!timerAtZero) {
+            UpdateTimer();
+        }
+    } //end Update
 
     void UpdateTimer()
     {
@@ -46,6 +51,8 @@ public class TimerCounting : MonoBehaviour
         }
 
         if (startTime <= 0) {
+            timerAtZero = true;
+
             timerText.text = "00" + ":" + "00";
             ifpaused.paused = true;
 
