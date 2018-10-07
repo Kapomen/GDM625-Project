@@ -8,11 +8,19 @@ public class Block : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        CheckPlayer();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
+
+    private void CheckPlayer()
+    {
+        WallGenerator wallGenScript = transform.parent.GetComponent<WallGenerator>();
+        isPlayer1Block = wallGenScript.Player1Wall;
+        //print(isPlayer1Block);
+    } //end CheckPlayer
 
     private void OnCollisionEnter(Collision col)
     {
@@ -27,7 +35,7 @@ public class Block : MonoBehaviour {
             print("block-ball collision");
             
             Destroy(this.gameObject);
-            //GameManager.Instance.BlockDestroyed(isPlayer1Block);
+            GameManager.Instance.BlockDestroyed(isPlayer1Block);
         }
-    }
+    } //end OnCollisionEnter
 } //end Block class

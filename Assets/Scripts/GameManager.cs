@@ -1,26 +1,26 @@
 ﻿using System;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
+//#if UNITY_EDITOR
+//using UnityEditor;
 
-[CustomEditor(typeof(GameManager))]
-public class GameManagerButtons : Editor
-{
+//[CustomEditor(typeof(GameManager))]
+//public class GameManagerButtons : Editor
+//{
 
-    public override void OnInspectorGUI()
-    {
+//    public override void OnInspectorGUI()
+//    {
 
-        GameManager gm = (GameManager)target;
+//        GameManager gm = (GameManager)target;
 
-        if (GUILayout.Button("Next Player"))
-        {
-        }
+//        if (GUILayout.Button("Next Player"))
+//        {
+//        }
 
-        DrawDefaultInspector();
-    }
-} // end GameManagerButtons class
-#endif
+//        DrawDefaultInspector();
+//    }
+//} // end GameManagerButtons class
+//#endif
 
 [Serializable]
 public enum GameStates
@@ -62,15 +62,17 @@ public class GameManager : MonoSingleton<GameManager>
         }
     } //end SetGameState
 
-    private void BlockDestroyed (bool player1)
+    public void BlockDestroyed (bool player1)
     {
         if (player1 == false) {
             BlocksDestroyed_P2++;
-            print(BlocksDestroyed_P2);
+            print("P2 Blocks Destroyed: " + BlocksDestroyed_P2);
         } else {
-            //BlocksDestroyed_P1++;
-            print(BlocksDestroyed_P1);
+            BlocksDestroyed_P1++;
+            print("P1 Blocks Destroyed: " + BlocksDestroyed_P1);
         }
     } //end BlockDestroyed
+
+    
 
 }  //end GameManager

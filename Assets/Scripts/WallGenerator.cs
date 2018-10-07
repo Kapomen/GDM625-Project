@@ -8,6 +8,8 @@ public class WallGenerator : MonoBehaviour
     public GameObject WoodCrate;
     public GameObject PlayerCrest;
 
+    public bool Player1Wall;
+
     private bool playerCrestSet = false; //Set to true for only 1 Crest Block per Player
     //SpriteRenderer crestSprite;
 
