@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BlockGenerator : MonoBehaviour
+public class WallGenerator : MonoBehaviour
 {
     private readonly List<GameObject> blockTypes = new List<GameObject>();
     public GameObject WoodCrate;
@@ -64,4 +64,4 @@ public class BlockGenerator : MonoBehaviour
 
     //References
     //https://answers.unity.com/questions/490542/spawning-a-grid-of-cubes.html
-} //end BlockGenerator class
+} //end WallGenerator class
