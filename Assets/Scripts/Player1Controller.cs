@@ -8,9 +8,10 @@ public class Player1Controller : MonoBehaviour {
     private bool PlayerIsDashing;
     public GameObject ball;
     public GameObject direction;
-    public float moveSpeed = 5f;
-    public bool isdash;
-    public float dashtimer = 0;
+    public float moveSpeed = 10f;
+    public bool iscooldown1;
+    public float dashtimer1 = 0;
+    public float dashcooldown = 2f;
 
 
     // Use this for initialization
@@ -25,9 +26,24 @@ public class Player1Controller : MonoBehaviour {
 
         CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
 
+        if (iscooldown1)
+        {
+            dashtimer1 += Time.deltaTime;
+            if (dashtimer1 >= dashcooldown)
+            {
+                iscooldown1 = false;
+                moveSpeed = 10;
+                dashtimer1 = 0;
+            }
+        }
+
+
         float dis = Vector3.Distance(ball.transform.position, transform.position);
+
+    
         if (ifstartscounting.battlestarts)
         {
+            
             transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
 
             if (Input.GetKey(KeyCode.Q))
@@ -40,28 +56,19 @@ public class Player1Controller : MonoBehaviour {
                 }
                 
             }
-            else if (Input.GetKey(KeyCode.LeftShift))
+            else if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                if (!isdash)
+                if (!iscooldown1)
                 {
                     DoDash();
-                }
-                
+                }     
             }
             else
             {
                 DoNothing();
             }
 
-            if (isdash)
-            {
-                dashtimer += Time.deltaTime;
-                if (dashtimer >= 0.5f)
-                {
-                    isdash = false;
-                    
-                }
-            }
+           
         }
 
     } //end Update
@@ -81,12 +88,13 @@ public class Player1Controller : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(2 * moveSpeed * Time.deltaTime, 0, 0);
-            isdash = true;
-        }else if (Input.GetKey(KeyCode.A))
+            moveSpeed = 20;
+            iscooldown1 = true;
+        }
+        else if (Input.GetKey(KeyCode.A))
         {
-            transform.position += new Vector3(-2 * moveSpeed * Time.deltaTime, 0, 0);
-            isdash = true;
+           moveSpeed = 20;
+            iscooldown1 = true;
         }
     
         print("Dashing");

@@ -8,11 +8,15 @@ public class Player2Controller : MonoBehaviour {
     private bool PlayerIsDashing;
     public GameObject ball;
     public GameObject direction;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 10f;
+    public bool iscooldown2;
+    public float dashtimer2 = 0;
+    public float dashcooldown = 2f;
+
     // Use this for initialization
     void Start()
     {
-
+        PlayerIsAttacking = false;
     }
 
     // Update is called once per frame
@@ -21,6 +25,17 @@ public class Player2Controller : MonoBehaviour {
         GameObject timeup = GameObject.Find("countdownTimer");
 
         CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
+
+        if (iscooldown2)
+        {
+            dashtimer2 += Time.deltaTime;
+            if (dashtimer2 >= dashcooldown)
+            {
+                iscooldown2 = false;
+                moveSpeed = 10;
+                dashtimer2 = 0;
+            }
+        }
 
         float dis = Vector3.Distance(ball.transform.position, transform.position);
 
@@ -37,9 +52,12 @@ public class Player2Controller : MonoBehaviour {
                     DoAttack();
                 }
             }
-            else if (Input.GetKey(KeyCode.N))
+            else if (Input.GetKeyDown(KeyCode.N))
             {
-                DoDash();
+                if (!iscooldown2)
+                {
+                    DoDash();
+                }
             }
             else
             {
@@ -60,7 +78,19 @@ public class Player2Controller : MonoBehaviour {
         }
     } //end DoAttack
 
-    void DoDash() {
+    void DoDash()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveSpeed = 20;
+            iscooldown2 = true;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveSpeed = 20;
+            iscooldown2 = true;
+        }
+
         print("Dashing");
     } //end DoSah
 
