@@ -9,6 +9,9 @@ public class Player1Controller : MonoBehaviour {
     public GameObject ball;
     public GameObject direction;
     public float moveSpeed = 5f;
+    public bool isdash;
+    public float dashtimer = 0;
+
 
     // Use this for initialization
 	void Start () {
@@ -39,11 +42,25 @@ public class Player1Controller : MonoBehaviour {
             }
             else if (Input.GetKey(KeyCode.LeftShift))
             {
-                DoDash();
+                if (!isdash)
+                {
+                    DoDash();
+                }
+                
             }
             else
             {
                 DoNothing();
+            }
+
+            if (isdash)
+            {
+                dashtimer += Time.deltaTime;
+                if (dashtimer >= 0.5f)
+                {
+                    isdash = false;
+                    
+                }
             }
         }
 
@@ -62,6 +79,16 @@ public class Player1Controller : MonoBehaviour {
 
     void DoDash()
     {
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += new Vector3(2 * moveSpeed * Time.deltaTime, 0, 0);
+            isdash = true;
+        }else if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += new Vector3(-2 * moveSpeed * Time.deltaTime, 0, 0);
+            isdash = true;
+        }
+    
         print("Dashing");
     } //end DoSah
 

@@ -1923,7 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1104208571}
-  startTime: 120
+  startTime: 3
   ball: {fileID: 1907719053}
   resultMenu: {fileID: 297535965}
 --- !u!114 &1104208571
@@ -3992,6 +3992,8 @@ MonoBehaviour:
   ball: {fileID: 1907719053}
   direction: {fileID: 1672625346}
   moveSpeed: 10
+  isdash: 0
+  dashtimer: 0
 --- !u!54 &1800793108
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4273,6 +4275,8 @@ MonoBehaviour:
   ball: {fileID: 0}
   direction: {fileID: 0}
   moveSpeed: 10
+  isdash: 0
+  dashtimer: 0
 --- !u!135 &1955077515
 SphereCollider:
   m_ObjectHideFlags: 0
