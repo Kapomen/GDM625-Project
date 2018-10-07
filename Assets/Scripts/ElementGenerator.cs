@@ -18,7 +18,7 @@ public class ElementGenerator : MonoBehaviour {
         ElementTypes.Add(element2);
         ElementTypes.Add(element3);
 
-        SpawnElement();
+        //SpawnElement();
 	}
 	
 	// Update is called once per frame

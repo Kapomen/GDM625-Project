@@ -7,11 +7,12 @@ public class TimerCounting : MonoBehaviour
 {
     public Text timerText;
     public float startTime;
-    private bool timerAtZero;
+
+    private bool timerZero;
 
     public GameObject ball;
 
-    public GameObject resultMenu;
+    //public GameObject resultMenu;
 
     //public GameObject launchprefab;
 
@@ -21,26 +22,22 @@ public class TimerCounting : MonoBehaviour
        Time.timeScale = 1;
         ball.GetComponent<Rigidbody>().useGravity = false;
         ball.GetComponent<Ball>().enabled = false;
-        //launchprefab.SetActive(false);
-        resultMenu.SetActive(false);
 
-        timerAtZero = false;
+        //launchprefab.SetActive(false);
+
+        timerZero = false;
     } //end Start
 
     // Update is called once per frame
     void Update()
     {
-        if (!timerAtZero) {
+        if (!timerZero) {
             UpdateTimer();
         }
     } //end Update
 
     void UpdateTimer()
-    {
-        
-        GameObject scenepause = GameObject.Find("SceneManager");
-        gamepausechecking ifpaused = scenepause.GetComponent<gamepausechecking>();
-        
+    {      
         GameObject timeup = GameObject.Find("countdownTimer");
         CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
 
@@ -51,20 +48,10 @@ public class TimerCounting : MonoBehaviour
         }
 
         if (startTime <= 0) {
-            timerAtZero = true;
+            timerZero = true;
+            GameManager.Instance.timerZero = true;
 
             timerText.text = "00" + ":" + "00";
-            ifpaused.paused = true;
-
-            GameManager.Instance.CompareBlocksDestroyed();
-
-            if (!resultMenu.activeInHierarchy) {
-                resultMenu.SetActive(true);
-                ifpaused.pausebutton.SetActive(false);
-                ifpaused.resetbutton.SetActive(false);
-            }
-        } else {
-            resultMenu.SetActive(false);
         }
 
         string minutes = Mathf.Floor(startTime / 60).ToString("00");

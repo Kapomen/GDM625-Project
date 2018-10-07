@@ -6,6 +6,8 @@ public class Block : MonoBehaviour {
 
     private bool isPlayer1Block;
 
+    public float ElementDropRate;
+
 	// Use this for initialization
 	void Start () {
         CheckPlayer();
@@ -31,11 +33,16 @@ public class Block : MonoBehaviour {
             //Destroy(this.gameObject);
         }
         if (col.gameObject.tag == "Ball")
-        {
-            print("block-ball collision");
-            
+        {   
             Destroy(this.gameObject);
             GameManager.Instance.BlockDestroyed(isPlayer1Block);
+
+            float elementDrop = Random.Range(0.0f, 1.0f);
+            if(elementDrop <= ElementDropRate)
+            {
+                //SpawnElement();
+                print("Element Dropped (" +elementDrop + "%)");
+            }
         }
     } //end OnCollisionEnter
 } //end Block class

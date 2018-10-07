@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc9858dfbbc7aa4f8717d744bab2c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ElementDropRate: 0.8
 --- !u!224 &224690425860875390
 RectTransform:
   m_ObjectHideFlags: 1
