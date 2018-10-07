@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class WallGenerator : MonoBehaviour
 {
-    private readonly List<GameObject> blockTypes = new List<GameObject>();
+    //private readonly List<GameObject> blockTypes = new List<GameObject>();
     public GameObject WoodCrate;
     public GameObject PlayerCrest;
 

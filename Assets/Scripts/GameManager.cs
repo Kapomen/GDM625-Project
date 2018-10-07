@@ -66,10 +66,10 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (player1 == false) {
             BlocksDestroyed_P2++;
-            print("P2 Blocks Destroyed: " + BlocksDestroyed_P2);
+            //print("P2 Blocks Destroyed: " + BlocksDestroyed_P2);
         } else {
             BlocksDestroyed_P1++;
-            print("P1 Blocks Destroyed: " + BlocksDestroyed_P1);
+            //print("P1 Blocks Destroyed: " + BlocksDestroyed_P1);
         }
     } //end BlockDestroyed
 

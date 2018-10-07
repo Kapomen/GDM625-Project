@@ -6,10 +6,18 @@ public class ElementGenerator : MonoBehaviour {
 
     public Vector3 Center; //x=-7 (p1), x=7 (p2)
     public Vector3 AreaSize;  // x=12, z=10
-    public GameObject ElementPrefab;
 
-	// Use this for initialization
-	void Start () {
+    private readonly List<GameObject> ElementTypes = new List<GameObject>();
+    public GameObject element1; //R-Fire
+    public GameObject element2; //G-Earth
+    public GameObject element3; //B-Water
+
+    // Use this for initialization
+    void Start () {
+        ElementTypes.Add(element1);
+        ElementTypes.Add(element2);
+        ElementTypes.Add(element3);
+
         SpawnElement();
 	}
 	
@@ -19,9 +27,12 @@ public class ElementGenerator : MonoBehaviour {
 
     public void SpawnElement()
     {
+        int element = Random.Range(0, ElementTypes.Count);
+        GameObject NewElement = ElementTypes[element];
+
         Vector3 pos = Center + new Vector3(Random.Range(-AreaSize.x / 2, AreaSize.x / 2), 1, Random.Range(-AreaSize.z / 2, AreaSize.z / 2));
        // Vector3 pos = Center + new Vector3(Random.Range(-AreaSize.x / 2, AreaSize.x / 2), Random.Range(-AreaSize.y / 2, AreaSize.y / 2), Random.Range(-AreaSize.z / 2, AreaSize.z / 2));
-        Instantiate(ElementPrefab, pos, Quaternion.identity);
+        Instantiate(NewElement, pos, Quaternion.identity);
     } //end SpawnElement
 
     private void OnDrawGizmosSelected()
