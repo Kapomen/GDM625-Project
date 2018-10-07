@@ -156,8 +156,6 @@ public class GameManager : MonoSingleton<GameManager>
             ifpaused.pausebutton.SetActive(false);
             ifpaused.resetbutton.SetActive(false);
 
-            // Sicheng - Use the winner string value to set the text for the ResultsText UI
-
             print(winner);
         }
         else {
