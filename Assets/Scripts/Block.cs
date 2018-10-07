@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Block : MonoBehaviour {
 
+    private bool isPlayer1Block;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -15,16 +17,17 @@ public class Block : MonoBehaviour {
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Player") {
-            print("block-player collision");
+            //print("block-player collision");
 
             //check for PlayerIsAttacking = true
-            //if true, Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
         if (col.gameObject.tag == "Ball")
         {
             print("block-ball collision");
             
             Destroy(this.gameObject);
+            //GameManager.Instance.BlockDestroyed(isPlayer1Block);
         }
     }
 } //end Block class
