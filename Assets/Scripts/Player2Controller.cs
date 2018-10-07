@@ -11,7 +11,7 @@ public class Player2Controller : MonoBehaviour {
     public float moveSpeed = 10f;
     public bool iscooldown2;
     public float dashtimer2 = 0;
-    public float dashcooldown = 2f;
+    public float dashcooldown = 3f;
 
     // Use this for initialization
     void Start()
@@ -29,10 +29,15 @@ public class Player2Controller : MonoBehaviour {
         if (iscooldown2)
         {
             dashtimer2 += Time.deltaTime;
+            if (dashtimer2 >= 1)
+            {
+
+                moveSpeed = 10;
+
+            }
             if (dashtimer2 >= dashcooldown)
             {
                 iscooldown2 = false;
-                moveSpeed = 10;
                 dashtimer2 = 0;
             }
         }

@@ -11,7 +11,7 @@ public class Player1Controller : MonoBehaviour {
     public float moveSpeed = 10f;
     public bool iscooldown1;
     public float dashtimer1 = 0;
-    public float dashcooldown = 2f;
+    public float dashcooldown = 3f;
 
 
     // Use this for initialization
@@ -29,10 +29,15 @@ public class Player1Controller : MonoBehaviour {
         if (iscooldown1)
         {
             dashtimer1 += Time.deltaTime;
+            if (dashtimer1 >= 1)
+            {
+                
+                moveSpeed = 10;
+                
+            }
             if (dashtimer1 >= dashcooldown)
             {
                 iscooldown1 = false;
-                moveSpeed = 10;
                 dashtimer1 = 0;
             }
         }
@@ -90,6 +95,7 @@ public class Player1Controller : MonoBehaviour {
         {
             moveSpeed = 20;
             iscooldown1 = true;
+
         }
         else if (Input.GetKey(KeyCode.A))
         {
