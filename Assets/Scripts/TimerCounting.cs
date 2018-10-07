@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class TimerCounting : MonoBehaviour
 {
-
     public Text timerText;
-
     public float startTime;
 
     public GameObject ball;
@@ -36,36 +34,29 @@ public class TimerCounting : MonoBehaviour
     {
         
         GameObject scenepause = GameObject.Find("SceneManager");
-
         gamepausechecking ifpaused = scenepause.GetComponent<gamepausechecking>();
         
-
         GameObject timeup = GameObject.Find("countdownTimer");
-
         CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
 
-        if (ifstartscounting.battlestarts)
-        {
+        if (ifstartscounting.battlestarts) {
             startTime -= Time.deltaTime;
             ball.GetComponent<Rigidbody>().useGravity = true;
             ball.GetComponent<Ball>().enabled = true;
-
         }
 
-        if (startTime <= 0)
-        {
-            
+        if (startTime <= 0) {
             timerText.text = "00" + ":" + "00";
             ifpaused.paused = true;
-            if (!resultMenu.activeInHierarchy)
-            {
+
+            GameManager.Instance.CompareBlocksDestroyed();
+
+            if (!resultMenu.activeInHierarchy) {
                 resultMenu.SetActive(true);
                 ifpaused.pausebutton.SetActive(false);
                 ifpaused.resetbutton.SetActive(false);
             }
-        }
-        else
-        {
+        } else {
             resultMenu.SetActive(false);
         }
 
@@ -73,5 +64,5 @@ public class TimerCounting : MonoBehaviour
         string seconds = Mathf.Floor(startTime % 60).ToString("00");
 
         timerText.text = minutes + ":" + seconds;
-    }
-}
+    } //end UpdateTimer
+} //end TimerCounting class

@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1104208571}
-  startTime: 300
+  startTime: 30
   ball: {fileID: 1907719053}
   resultMenu: {fileID: 297535965}
 --- !u!114 &1104208571

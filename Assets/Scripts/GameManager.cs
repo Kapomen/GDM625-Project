@@ -73,6 +73,15 @@ public class GameManager : MonoSingleton<GameManager>
         }
     } //end BlockDestroyed
 
-    
+    public void CompareBlocksDestroyed()
+    {
+        if (BlocksDestroyed_P1 == BlocksDestroyed_P2) {
+            print("** TIE! **");
+        } else if (BlocksDestroyed_P1 < BlocksDestroyed_P2) {
+            print("** PLAYER 1 WINS! **");
+        } else {
+            print("** PLAYER 2 WINS! **");
+        }
+    } //CompareBlocksDestroyed
 
 }  //end GameManager
