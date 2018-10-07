@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 //#if UNITY_EDITOR
 //using UnityEditor;
@@ -42,6 +43,8 @@ public class GameManager : MonoSingleton<GameManager>
     public bool timerZero;
     private bool winnerIsPlayer1;
     private bool winnerSet;
+
+    public Text resultText;
 
     public GameObject resultMenu;
 
@@ -137,8 +140,10 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (winnerIsPlayer1) {
             winner = "Player 1 Wins!";
+            resultText.text = winner;
         } else {
             winner = "Player 2 Wins!";
+            resultText.text = winner;
         } //end else
 
         gamepausechecking ifpaused = sceneManager.GetComponent<gamepausechecking>();
