@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour {
 	void Update () {
 		
 	}
-  
+  /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Player")
@@ -22,6 +22,6 @@ public class Projectile : MonoBehaviour {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         
-    }
+    }*/
     
 }

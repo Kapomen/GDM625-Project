@@ -31,9 +31,7 @@ public class Player2Controller : MonoBehaviour {
             dashtimer2 += Time.deltaTime;
             if (dashtimer2 >= 1)
             {
-
                 moveSpeed = 10;
-
             }
             if (dashtimer2 >= dashcooldown)
             {
@@ -74,7 +72,6 @@ public class Player2Controller : MonoBehaviour {
 
     void DoAttack()
     {
-        
         float power = GetPower();
         if (power > 0)
         {
@@ -122,5 +119,19 @@ public class Player2Controller : MonoBehaviour {
         float power = y * maxPower;
         power = Mathf.Clamp(power, 0, maxPower);
         return power;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Ball")
+        {
+            float power = GetPower();
+            if (power > 0)
+            {
+                Rigidbody rb = ball.GetComponent<Rigidbody>();
+                rb.velocity = GetReflected() * power / 2;
+            }
+        }
+
     }
 }

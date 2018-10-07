@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1Controller : MonoBehaviour {
+public class Player1Controller : MonoBehaviour
+{
 
     private bool PlayerIsAttacking;
     private bool PlayerIsDashing;
@@ -15,9 +16,10 @@ public class Player1Controller : MonoBehaviour {
 
 
     // Use this for initialization
-	void Start () {
+    void Start()
+    {
         PlayerIsAttacking = false;
-	}
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,9 +33,7 @@ public class Player1Controller : MonoBehaviour {
             dashtimer1 += Time.deltaTime;
             if (dashtimer1 >= 1)
             {
-                
                 moveSpeed = 10;
-                
             }
             if (dashtimer1 >= dashcooldown)
             {
@@ -45,42 +45,42 @@ public class Player1Controller : MonoBehaviour {
 
         float dis = Vector3.Distance(ball.transform.position, transform.position);
 
-    
+
         if (ifstartscounting.battlestarts)
         {
-            
+
             transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
 
             if (Input.GetKey(KeyCode.Q))
             {
                 if (PlayerIsAttacking == false) { PlayerIsAttacking = true; }
                 gameObject.GetComponent<Renderer>().material.color = Color.green;
-                if (dis <= 3 & dis>= 0)
+                if (dis <= 3 & dis >= 0)
                 {
                     DoAttack();
                 }
-                
+
             }
             else if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if (!iscooldown1)
                 {
                     DoDash();
-                }     
+                }
             }
             else
             {
                 DoNothing();
             }
 
-           
+
         }
 
     } //end Update
 
     void DoAttack()
     {
-        
+
         float power = GetPower();
         if (power > 0)
         {
@@ -99,10 +99,10 @@ public class Player1Controller : MonoBehaviour {
         }
         else if (Input.GetKey(KeyCode.A))
         {
-           moveSpeed = 20;
+            moveSpeed = 20;
             iscooldown1 = true;
         }
-    
+
         print("Dashing");
     } //end DoSah
 
@@ -126,10 +126,23 @@ public class Player1Controller : MonoBehaviour {
         float idealDistance = 4;
         float maxPower = 12;
         float x = Vector3.Distance(ball.transform.position, transform.position);
-        float y = Mathf.Abs(x-idealDistance)/3+1;
+        float y = Mathf.Abs(x - idealDistance) / 3 + 1;
         float power = y * maxPower;
         power = Mathf.Clamp(power, 0, maxPower);
         return power;
     }
 
-}  //end Player1Controller class
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Ball")
+        {
+            float power = GetPower();
+            if (power > 0)
+            {
+                Rigidbody rb = ball.GetComponent<Rigidbody>();
+                rb.velocity = GetReflected() * power / 2;
+            }
+        }
+
+    }
+}//end Player1Controller class
