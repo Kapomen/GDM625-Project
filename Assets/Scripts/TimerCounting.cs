@@ -12,8 +12,6 @@ public class TimerCounting : MonoBehaviour
 
     public GameObject ball;
 
-    public GameObject resultmenu;
-
     //public GameObject resultMenu;
 
     //public GameObject launchprefab;
