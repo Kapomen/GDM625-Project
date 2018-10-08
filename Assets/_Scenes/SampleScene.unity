@@ -3694,7 +3694,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1907719053}
-  direction: {fileID: 1672625346}
   moveSpeed: 10
   iscooldown1: 0
   dashtimer1: 0
@@ -4069,7 +4068,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1955077517}
   - component: {fileID: 1955077516}
-  - component: {fileID: 1955077518}
   - component: {fileID: 1955077515}
   - component: {fileID: 1955077514}
   - component: {fileID: 1955077513}
@@ -4107,7 +4105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1907719053}
-  direction: {fileID: 983603340}
   moveSpeed: 10
   iscooldown1: 0
   dashtimer1: 0
@@ -4185,24 +4182,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1955077518
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1955077512}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f6a49553eae5f846a19fa5edce415a3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1988643005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4677015260782458, guid: c253b3ea229d2be49a8cf1fc350debd6,
