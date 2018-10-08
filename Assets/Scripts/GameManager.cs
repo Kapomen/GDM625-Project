@@ -26,12 +26,13 @@ using UnityEngine.UI;
 [Serializable]
 public enum GameStates
 {
-    Main
+    Preload, Main
 } //end GameStates
 public delegate void OnStateChangeHandler();
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    protected GameManager() { }
     public event OnStateChangeHandler OnStateChange;
 
     private int BlocksDestroyed_P1;
@@ -42,11 +43,10 @@ public class GameManager : MonoSingleton<GameManager>
 
     public bool timerZero;
     private bool winnerIsPlayer1;
-    private bool winnerSet;
-
-    public Text resultText;
+    public bool winnerSet;
 
     public GameObject resultMenu;
+    public Text resultText;
 
     private GameObject sceneManager;
 
@@ -59,6 +59,7 @@ public class GameManager : MonoSingleton<GameManager>
         resultMenu.SetActive(false);
 
         sceneManager = GameObject.Find("SceneManager");
+        print("GM_START");
     }
 	
 	// Update is called once per frame
@@ -81,6 +82,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             OnStateChange();
         }
+        print("StateChange " + OnStateChange);
     } //end SetGameState
 
     public void BlockDestroyed (bool player1)

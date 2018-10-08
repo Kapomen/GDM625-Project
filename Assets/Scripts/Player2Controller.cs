@@ -42,7 +42,7 @@ public class Player2Controller : MonoBehaviour {
 
         float dis = Vector3.Distance(ball.transform.position, transform.position);
 
-        if (ifstartscounting.battlestarts)
+        if (ifstartscounting.battlestarts && !GameManager.Instance.winnerSet)
         {
             transform.Translate(moveSpeed * Input.GetAxis("Horizontal2") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical2") * Time.deltaTime);
 

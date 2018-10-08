@@ -7,23 +7,29 @@ public class Player1Controller : MonoBehaviour
 
     private bool PlayerIsAttacking;
     private bool PlayerIsDashing;
+
     public GameObject ball;
     public GameObject direction;
+
     public float moveSpeed = 10f;
     public bool iscooldown1;
     public float dashtimer1 = 0;
     public float dashcooldown = 3f;
+
+    //private Animator animator;
 
 
     // Use this for initialization
     void Start()
     {
         PlayerIsAttacking = false;
+        //animator = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+ 
         GameObject timeup = GameObject.Find("countdownTimer");
 
         CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
@@ -46,7 +52,7 @@ public class Player1Controller : MonoBehaviour
         float dis = Vector3.Distance(ball.transform.position, transform.position);
 
 
-        if (ifstartscounting.battlestarts)
+        if (ifstartscounting.battlestarts && !GameManager.Instance.winnerSet)
         {
 
             transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
