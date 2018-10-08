@@ -5,11 +5,49 @@ using UnityEngine;
 public class Player1Controller : MonoBehaviour
 {
 
-    private bool PlayerIsAttacking;
-    private bool PlayerIsDashing;
+    Animator animator;
+    Vector3 defaultScale;
+
+    //private bool PlayerIsAttacking;
+    //private bool PlayerIsDashing;
+
+    float stateStartTime;
+
+    float timeInState
+    {
+        get { return Time.time - stateStartTime; }
+    }
+
+    const string M_IdleAnim = "Idle";
+    const string M_WalkLeftAnim = "WalkLeft";
+    const string M_WalkRightAnim = "WalkRight";
+    const string M_DashLeftAnim = "DashLeft";
+    const string M_DashRightAnim = "DashRight";
+    const string M_AttackAnim = "Attack";
+    const string M_EnterDefeatAnim = "EnterDefeat";
+    const string M_DefeatAnim = "Defeat";
+    const string M_EnterVictoryAnim = "EnterVictory";
+    const string M_VictoryAnim = "Victory";
+
+    enum State
+    {
+        Idle,
+        WalkLeft,
+        WalkRight,
+        DashLeft,
+        DashRight,
+        Attack,
+        EnterDefeat,
+        Defeat,
+        EnterVictory,
+        Victory
+    }
+    State state;
+    float horzInput;
+    float vertInput;
 
     public GameObject ball;
-    public GameObject direction;
+    //public GameObject direction;
 
     public float moveSpeed = 10f;
     public bool iscooldown1;
@@ -22,16 +60,15 @@ public class Player1Controller : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        PlayerIsAttacking = false;
-        //animator = this.GetComponent<Animator>();
+        //PlayerIsAttacking = false;
+        animator = GetComponentInChildren<Animator>();
+        defaultScale = transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
- 
         GameObject timeup = GameObject.Find("countdownTimer");
-
         CountdownTimer ifstartscounting = timeup.GetComponent<CountdownTimer>();
 
         if (iscooldown1)
@@ -54,24 +91,26 @@ public class Player1Controller : MonoBehaviour
 
         if (ifstartscounting.battlestarts && !GameManager.Instance.winnerSet)
         {
+            horzInput = Input.GetAxisRaw("Horizontal");
+            vertInput = Input.GetAxisRaw("Vertical");
 
-            transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
+            //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
+            transform.Translate(moveSpeed * horzInput * Time.deltaTime, 0f, moveSpeed * vertInput * Time.deltaTime);
 
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                if (PlayerIsAttacking == false) { PlayerIsAttacking = true; }
-                gameObject.GetComponent<Renderer>().material.color = Color.green;
-                if (dis <= 3 & dis >= 0)
-                {
-                    DoAttack();
-                }
-
+                Attack();
+                //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                //if (dis <= 3 & dis >= 0)
+                //{
+                //    Attack();
+                //}
             }
             else if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if (!iscooldown1)
                 {
-                    DoDash();
+                    Dash();
                 }
             }
             else
@@ -79,53 +118,152 @@ public class Player1Controller : MonoBehaviour
                 DoNothing();
             }
 
-
+            ContinueState();
         }
 
     } //end Update
 
-    void DoAttack()
+    void SetOrKeepState(State state)
     {
+        if (this.state == state) return;
+        EnterState(state);
+    } //end SetOrKeepState
+
+    void ExitState() { } //end ExitState
+
+    void EnterState(State state)
+    {
+        ExitState();
+        switch (state)
+        {
+            case State.Idle:
+                animator.Play(M_IdleAnim);
+                break;
+            case State.WalkLeft:
+                animator.Play(M_WalkLeftAnim);
+                Face(-1);
+                break;
+            case State.WalkRight:
+                animator.Play(M_WalkRightAnim);
+                Face(1);
+                break;
+            case State.DashLeft:
+                animator.Play(M_DashLeftAnim);
+                Face(-1);
+                break;
+            case State.DashRight:
+                animator.Play(M_DashRightAnim);
+                Face(1);
+                break;
+            case State.Attack:
+                animator.Play(M_AttackAnim);
+                break;
+            case State.EnterDefeat:
+                animator.Play(M_EnterDefeatAnim);
+                break;
+            case State.EnterVictory:
+                animator.Play(M_EnterVictoryAnim);
+                break;
+        } //end switch
+
+        this.state = state;
+        stateStartTime = Time.time;
+    } //end EnterState
+
+    void ContinueState()
+    {
+        switch (state)
+        {
+
+            case State.Idle:
+                Walk();
+                break;
+
+            case State.Attack:
+                EnterState(State.Idle);
+                break;
+
+            case State.WalkLeft:
+            case State.WalkRight:
+                if (!Walk()) EnterState(State.Idle);
+                break;
+
+            case State.DashLeft:
+            case State.DashRight:
+                if (!Dash()) EnterState(State.Idle);
+                break;
+        } //emd switch
+    } //end ContinueState
+
+    void Face(int direction)
+    {
+        transform.localScale = new Vector3(defaultScale.x * direction, defaultScale.y, defaultScale.z);
+    }
+
+    bool Walk()
+    {
+        //if (horzInput < 0 && vertInput > 0) SetOrKeepState(State.WalkLeft);
+        //else if (horzInput < 0 && vertInput < 0) SetOrKeepState(State.WalkLeft);
+        if (horzInput < 0) SetOrKeepState(State.WalkLeft);
+        else if (horzInput > 0) SetOrKeepState(State.WalkRight);
+        else return false;
+        return true;
+    } //end Walk
+
+
+    bool Attack()
+    {
+        SetOrKeepState(State.Attack);
 
         float power = GetPower();
         if (power > 0)
         {
             Rigidbody rb = ball.GetComponent<Rigidbody>();
-            rb.velocity = GetReflected() * power;
+            //rb.velocity = GetReflected() * power;
         }
-    } //end DoAttack
+        //else return false;
 
-    void DoDash()
+        //print("Attacking");
+        return false;
+    } //end Attack
+
+    bool Dash()
     {
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveSpeed = 20;
-            iscooldown1 = true;
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    moveSpeed = 20;
+        //    iscooldown1 = true;
 
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            moveSpeed = 20;
-            iscooldown1 = true;
-        }
+        //}
+        //else if (Input.GetKey(KeyCode.A))
+        //{
+        //    moveSpeed = 20;
+        //    iscooldown1 = true;
+        //}
 
-        print("Dashing");
-    } //end DoSah
+        moveSpeed = 20;
+        iscooldown1 = true;
+
+        if (horzInput < 0) SetOrKeepState(State.DashLeft);
+        else if (horzInput > 0) SetOrKeepState(State.DashRight);
+        else return false;
+        return true;
+    } //end Dash
 
     void DoNothing()
     {
-        if (PlayerIsAttacking == true) { PlayerIsAttacking = false; }
-        gameObject.GetComponent<Renderer>().material.color = Color.red;
+        //SetOrKeepState(State.Idle);
+        //gameObject.GetComponent<Renderer>().material.color = Color.red;
     } //end DoNothing
 
-    private Vector3 GetReflected()
-    {
-        Vector3 tennisVector = transform.position - ball.transform.position;
-        Vector3 planeTangent = Vector3.Cross(tennisVector, direction.transform.forward);
-        Vector3 planeNormal = Vector3.Cross(planeTangent, tennisVector);
-        Vector3 reflected = Vector3.Reflect(direction.transform.forward, planeNormal);
-        return reflected.normalized;
-    }
+    //private Vector3 GetReflected()
+    //{
+    //    Vector3 tennisVector = transform.position - ball.transform.position;
+    //    Vector3 planeTangent = Vector3.Cross(tennisVector, direction.transform.forward);
+    //    Vector3 planeNormal = Vector3.Cross(planeTangent, tennisVector);
+    //    Vector3 reflected = Vector3.Reflect(direction.transform.forward, planeNormal);
+    //    return reflected.normalized;
+    //}
 
     private float GetPower()
     {
@@ -146,7 +284,7 @@ public class Player1Controller : MonoBehaviour
             if (power > 0)
             {
                 Rigidbody rb = ball.GetComponent<Rigidbody>();
-                rb.velocity = GetReflected() * (power*0.8f);
+                //rb.velocity = GetReflected() * (power*0.8f);
             }
         }
 
