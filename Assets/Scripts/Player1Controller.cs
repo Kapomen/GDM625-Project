@@ -130,7 +130,7 @@ public class Player1Controller : MonoBehaviour
     private float GetPower()
     {
         float idealDistance = 4;
-        float maxPower = 12;
+        float maxPower = 15;
         float x = Vector3.Distance(ball.transform.position, transform.position);
         float y = Mathf.Abs(x - idealDistance) / 3 + 1;
         float power = y * maxPower;
@@ -146,7 +146,7 @@ public class Player1Controller : MonoBehaviour
             if (power > 0)
             {
                 Rigidbody rb = ball.GetComponent<Rigidbody>();
-                rb.velocity = GetReflected() * power / 2;
+                rb.velocity = GetReflected() * (power*0.8f);
             }
         }
 
