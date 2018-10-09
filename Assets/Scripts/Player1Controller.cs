@@ -56,7 +56,7 @@ public class Player1Controller : MonoBehaviour
     public GameObject direction;
     private float ballDistance;
 
-    public float moveSpeed = 8f;
+    public float moveSpeed = 6f;
     public bool iscooldown1;
     public float dashtimer1 = 0;
     public float dashcooldown = 3f;
@@ -83,7 +83,7 @@ public class Player1Controller : MonoBehaviour
             dashtimer1 += Time.deltaTime;
             if (dashtimer1 >= 1)
             {
-                moveSpeed = 8;
+                moveSpeed = 6;
             }
             if (dashtimer1 >= dashcooldown)
             {

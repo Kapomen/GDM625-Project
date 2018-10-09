@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -888,6 +888,11 @@ Prefab:
       propertyPath: Player1Wall
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114115374141030364, guid: 53c02e61fd8aab640a4c837de255d039,
+        type: 2}
+      propertyPath: wallHeight
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c02e61fd8aab640a4c837de255d039, type: 2}
   m_IsPrefabAsset: 0
@@ -1551,7 +1556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 869925617}
   m_Layer: 14
-  m_Name: playerfacing2
+  m_Name: PlayerBearing_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1563,13 +1568,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 869925616}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.06162845, y: -0.70441604, z: -0.06162845, w: 0.70441604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1205502653}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -10, y: -90, z: 0}
 --- !u!1 &912083888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983603341}
   m_Layer: 14
-  m_Name: playerfacing1
+  m_Name: PlayerBearing_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,13 +1741,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 983603340}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.06162845, y: 0.70441604, z: 0.06162845, w: 0.70441604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1955077517}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -10, y: 90, z: 0}
 --- !u!1 &1048069238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2093,7 +2098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 1907719053}
   direction: {fileID: 869925616}
-  moveSpeed: 8
+  moveSpeed: 6
   iscooldown1: 0
   dashtimer1: 0
   dashcooldown: 2
@@ -3021,6 +3026,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1808975684496310, guid: 03a54c484f3f8cc4d9abf5bba6ad17db,
         type: 2}
+    - target: {fileID: 114115374141030364, guid: 53c02e61fd8aab640a4c837de255d039,
+        type: 2}
+      propertyPath: wallHeight
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c02e61fd8aab640a4c837de255d039, type: 2}
   m_IsPrefabAsset: 0
@@ -4168,7 +4178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 1907719053}
   direction: {fileID: 983603340}
-  moveSpeed: 8
+  moveSpeed: 6
   iscooldown1: 0
   dashtimer1: 0
   dashcooldown: 2
