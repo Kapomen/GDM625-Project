@@ -21,8 +21,10 @@ public class Player1Controller : MonoBehaviour
     const string M_IdleAnim = "Idle";
     const string M_WalkLeftAnim = "WalkLeft";
     const string M_WalkRightAnim = "WalkRight";
+    const string M_WalkVertAnim = "WalkVert";
     const string M_DashLeftAnim = "DashLeft";
     const string M_DashRightAnim = "DashRight";
+    const string M_DashVertAnim = "DashVert";
     const string M_AttackAnim = "Attack";
     const string M_EnterDefeatAnim = "EnterDefeat";
     const string M_DefeatAnim = "Defeat";
@@ -34,8 +36,10 @@ public class Player1Controller : MonoBehaviour
         Idle,
         WalkLeft,
         WalkRight,
+        WalkVert,
         DashLeft,
         DashRight,
+        DashVert,
         Attack,
         EnterDefeat,
         Defeat,
@@ -45,11 +49,14 @@ public class Player1Controller : MonoBehaviour
     State state;
     float horzInput;
     float vertInput;
+    bool attackIsPressed;
+    bool dashIsPressed;
 
     public GameObject ball;
-    //public GameObject direction;
+    public GameObject direction;
+    private float ballDistance;
 
-    public float moveSpeed = 10f;
+    public float moveSpeed = 8f;
     public bool iscooldown1;
     public float dashtimer1 = 0;
     public float dashcooldown = 3f;
@@ -76,7 +83,7 @@ public class Player1Controller : MonoBehaviour
             dashtimer1 += Time.deltaTime;
             if (dashtimer1 >= 1)
             {
-                moveSpeed = 10;
+                moveSpeed = 8;
             }
             if (dashtimer1 >= dashcooldown)
             {
@@ -85,19 +92,23 @@ public class Player1Controller : MonoBehaviour
             }
         }
 
-
-        float dis = Vector3.Distance(ball.transform.position, transform.position);
-
+        ballDistance = Vector3.Distance(ball.transform.position, transform.position);
 
         if (ifstartscounting.battlestarts && !GameManager.Instance.winnerSet)
         {
             horzInput = Input.GetAxisRaw("Horizontal");
             vertInput = Input.GetAxisRaw("Vertical");
+            attackIsPressed = Input.GetKeyDown(KeyCode.Z);
+            dashIsPressed = Input.GetKeyDown(KeyCode.LeftShift);
 
             //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
             transform.Translate(moveSpeed * horzInput * Time.deltaTime, 0f, moveSpeed * vertInput * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (dashIsPressed && !iscooldown1)
+            {
+                    Dash();
+            }
+            else if (attackIsPressed)
             {
                 Attack();
                 //gameObject.GetComponent<Renderer>().material.color = Color.green;
@@ -106,16 +117,9 @@ public class Player1Controller : MonoBehaviour
                 //    Attack();
                 //}
             }
-            else if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                if (!iscooldown1)
-                {
-                    Dash();
-                }
-            }
             else
             {
-                DoNothing();
+                //if (!Walk()) DoNothing();
             }
 
             ContinueState();
@@ -133,11 +137,15 @@ public class Player1Controller : MonoBehaviour
 
     void EnterState(State state)
     {
+        print(state);
         ExitState();
         switch (state)
         {
             case State.Idle:
                 animator.Play(M_IdleAnim);
+                break;
+            case State.Attack:
+                animator.Play(M_AttackAnim);
                 break;
             case State.WalkLeft:
                 animator.Play(M_WalkLeftAnim);
@@ -147,6 +155,9 @@ public class Player1Controller : MonoBehaviour
                 animator.Play(M_WalkRightAnim);
                 Face(1);
                 break;
+            case State.WalkVert:
+                animator.Play(M_WalkVertAnim);
+                break;
             case State.DashLeft:
                 animator.Play(M_DashLeftAnim);
                 Face(-1);
@@ -155,8 +166,8 @@ public class Player1Controller : MonoBehaviour
                 animator.Play(M_DashRightAnim);
                 Face(1);
                 break;
-            case State.Attack:
-                animator.Play(M_AttackAnim);
+            case State.DashVert:
+                animator.Play(M_DashVertAnim);
                 break;
             case State.EnterDefeat:
                 animator.Play(M_EnterDefeatAnim);
@@ -174,22 +185,24 @@ public class Player1Controller : MonoBehaviour
     {
         switch (state)
         {
-
             case State.Idle:
                 Walk();
                 break;
 
             case State.Attack:
-                EnterState(State.Idle);
+                //if (!Walk()) EnterState(State.Idle);
+                if (!Walk()) SetOrKeepState(State.Idle);
                 break;
 
             case State.WalkLeft:
             case State.WalkRight:
+            case State.WalkVert:
                 if (!Walk()) EnterState(State.Idle);
                 break;
 
             case State.DashLeft:
             case State.DashRight:
+            case State.DashVert:
                 if (!Dash()) EnterState(State.Idle);
                 break;
         } //emd switch
@@ -203,31 +216,29 @@ public class Player1Controller : MonoBehaviour
     bool Walk()
     {
         //if (horzInput < 0 && vertInput > 0) SetOrKeepState(State.WalkLeft);
-        //else if (horzInput < 0 && vertInput < 0) SetOrKeepState(State.WalkLeft);
-        if (horzInput < 0) SetOrKeepState(State.WalkLeft);
+        if (vertInput < 0 || vertInput > 0) SetOrKeepState(State.WalkVert);
+        else if (horzInput < 0) SetOrKeepState(State.WalkLeft);
         else if (horzInput > 0) SetOrKeepState(State.WalkRight);
         else return false;
         return true;
     } //end Walk
 
 
-    bool Attack()
+    private void Attack()
     {
-        SetOrKeepState(State.Attack);
-
+        EnterState(State.Attack);
         float power = GetPower();
-        if (power > 0)
+        if (ballDistance <= 3 & ballDistance >= 0)
         {
-            Rigidbody rb = ball.GetComponent<Rigidbody>();
-            //rb.velocity = GetReflected() * power;
+           Rigidbody rb = ball.GetComponent<Rigidbody>();
+           rb.velocity = GetReflected() * power;
         }
-        //else return false;
 
-        //print("Attacking");
-        return false;
+
+        //ContinueState();
     } //end Attack
 
-    bool Dash()
+    private bool Dash()
     {
         //if (Input.GetKey(KeyCode.D))
         //{
@@ -241,7 +252,7 @@ public class Player1Controller : MonoBehaviour
         //    iscooldown1 = true;
         //}
 
-        moveSpeed = 20;
+        moveSpeed = 12;
         iscooldown1 = true;
 
         if (horzInput < 0) SetOrKeepState(State.DashLeft);
@@ -252,18 +263,19 @@ public class Player1Controller : MonoBehaviour
 
     void DoNothing()
     {
+        EnterState(State.Idle);
         //SetOrKeepState(State.Idle);
         //gameObject.GetComponent<Renderer>().material.color = Color.red;
     } //end DoNothing
 
-    //private Vector3 GetReflected()
-    //{
-    //    Vector3 tennisVector = transform.position - ball.transform.position;
-    //    Vector3 planeTangent = Vector3.Cross(tennisVector, direction.transform.forward);
-    //    Vector3 planeNormal = Vector3.Cross(planeTangent, tennisVector);
-    //    Vector3 reflected = Vector3.Reflect(direction.transform.forward, planeNormal);
-    //    return reflected.normalized;
-    //}
+    private Vector3 GetReflected()
+    {
+        Vector3 tennisVector = transform.position - ball.transform.position;
+        Vector3 planeTangent = Vector3.Cross(tennisVector, direction.transform.forward);
+        Vector3 planeNormal = Vector3.Cross(planeTangent, tennisVector);
+        Vector3 reflected = Vector3.Reflect(direction.transform.forward, planeNormal);
+        return reflected.normalized;
+    }
 
     private float GetPower()
     {
@@ -284,7 +296,7 @@ public class Player1Controller : MonoBehaviour
             if (power > 0)
             {
                 Rigidbody rb = ball.GetComponent<Rigidbody>();
-                //rb.velocity = GetReflected() * (power*0.8f);
+                rb.velocity = GetReflected() * (power*0.8f);
             }
         }
 
