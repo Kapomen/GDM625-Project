@@ -1362,7 +1362,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jeremy Passmore is the guy who didn't have the right unity
+  m_Text: Jeremy Passmore
 --- !u!222 &1560742614
 CanvasRenderer:
   m_ObjectHideFlags: 0
