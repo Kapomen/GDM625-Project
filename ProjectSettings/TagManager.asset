@@ -10,6 +10,7 @@ TagManager:
   - Pickup
   - Environment
   - waterpickup
+  - music
   layers:
   - Default
   - TransparentFX
