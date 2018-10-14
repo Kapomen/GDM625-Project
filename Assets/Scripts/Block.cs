@@ -31,7 +31,7 @@ public class Block : MonoBehaviour {
         //print(isPlayer1Block);
     } //end CheckPlayer
 
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionExit(Collision col)
     {
         if (col.gameObject.tag == "Player") {
             //print("block-player collision");

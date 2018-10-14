@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ElementGenerator : MonoBehaviour {
 
+    [Header("References")]
     public Vector3 Center; //x=-7 (p1), x=7 (p2)
     public Vector3 AreaSize;  // x=12, z=10
 
@@ -11,6 +12,9 @@ public class ElementGenerator : MonoBehaviour {
     public GameObject element1; //R-Fire
     public GameObject element2; //G-Earth
     public GameObject element3; //B-Water
+
+    private SphereCollider gemCollider3D;
+    private Transform gemVisuals;
 
     // Use this for initialization
     void Start () {
@@ -31,8 +35,27 @@ public class ElementGenerator : MonoBehaviour {
         GameObject NewElement = ElementTypes[element];
 
         Vector3 pos = Center + new Vector3(Random.Range(-AreaSize.x / 2, AreaSize.x / 2), 1, Random.Range(-AreaSize.z / 2, AreaSize.z / 2));
-       // Vector3 pos = Center + new Vector3(Random.Range(-AreaSize.x / 2, AreaSize.x / 2), Random.Range(-AreaSize.y / 2, AreaSize.y / 2), Random.Range(-AreaSize.z / 2, AreaSize.z / 2));
+
         Instantiate(NewElement, pos, Quaternion.identity);
+
+        //GameObject newElement = ObjectPooler.SharedInstance.GetPooledObject("Pickup");
+        //if (newElement != null)
+        //{
+        //    gemCollider3D = newElement.GetComponent<SphereCollider>();
+            
+        //    //gemVisuals = newElement.transform.Find("Gem Mesh");
+        //    //gemVisuals.gameObject.SetActive(true);
+        //    //Must be able to set Mesh to active onEnable
+
+        //    if (!gemCollider3D.enabled)
+        //    {
+        //        gemCollider3D.enabled = true;
+        //    }
+        //    newElement.transform.position = pos;
+        //    newElement.transform.rotation = Quaternion.identity;
+        //    newElement.SetActive(true);
+        //}
+
     } //end SpawnElement
 
     private void OnDrawGizmosSelected()

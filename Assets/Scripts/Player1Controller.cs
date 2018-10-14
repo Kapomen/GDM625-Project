@@ -137,7 +137,7 @@ public class Player1Controller : MonoBehaviour
 
     void EnterState(State state)
     {
-        print(state);
+        //print(state);
         ExitState();
         switch (state)
         {
