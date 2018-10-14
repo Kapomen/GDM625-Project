@@ -249,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 491162410}
   - component: {fileID: 491162413}
+  - component: {fileID: 491162414}
   - component: {fileID: 491162412}
   - component: {fileID: 491162411}
   m_Layer: 5
@@ -363,6 +364,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 491162409}
   m_CullTransparentMesh: 0
+--- !u!114 &491162414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 491162409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cd5419f7af31949be3dae1b959d73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d6084144e17b7124baa51dbdde8c2f2e, type: 3}
 --- !u!1 &538879933
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +387,7 @@ GameObject:
   - component: {fileID: 538879937}
   - component: {fileID: 538879936}
   - component: {fileID: 538879935}
+  - component: {fileID: 538879938}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -486,6 +500,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 538879933}
   m_CullTransparentMesh: 0
+--- !u!114 &538879938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538879933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cd5419f7af31949be3dae1b959d73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d6084144e17b7124baa51dbdde8c2f2e, type: 3}
 --- !u!1 &641727871
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +600,7 @@ GameObject:
   - component: {fileID: 1134643233}
   - component: {fileID: 1134643232}
   - component: {fileID: 1134643231}
+  - component: {fileID: 1134643234}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -686,6 +713,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1134643229}
   m_CullTransparentMesh: 0
+--- !u!114 &1134643234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1134643229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cd5419f7af31949be3dae1b959d73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d6084144e17b7124baa51dbdde8c2f2e, type: 3}
 --- !u!1 &1156281443
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +736,7 @@ GameObject:
   - component: {fileID: 1156281447}
   - component: {fileID: 1156281446}
   - component: {fileID: 1156281445}
+  - component: {fileID: 1156281448}
   m_Layer: 5
   m_Name: PvP
   m_TagString: Untagged
@@ -809,6 +849,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1156281443}
   m_CullTransparentMesh: 0
+--- !u!114 &1156281448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1156281443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cd5419f7af31949be3dae1b959d73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d6084144e17b7124baa51dbdde8c2f2e, type: 3}
 --- !u!1 &1211170525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1204,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645326616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 507.5, y: 267.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
