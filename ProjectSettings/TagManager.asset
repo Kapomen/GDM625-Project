@@ -9,6 +9,8 @@ TagManager:
   - Block
   - Pickup
   - Environment
+  - waterpickup
+  - music
   layers:
   - Default
   - TransparentFX

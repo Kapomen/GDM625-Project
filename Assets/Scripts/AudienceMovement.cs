@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellManager : MonoBehaviour {
+public class AudienceMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +13,9 @@ public class SpellManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void AudienceMove()
+    {
+
+    }
 }

@@ -22,11 +22,11 @@ public class BGM : MonoBehaviour
     {
         Scene sceneloadf = SceneManager.GetActiveScene();
         //Debug.Log("scenenumber " + sceneloadf.buildIndex);
-        if (sceneloadf.buildIndex == 1 || sceneloadf.buildIndex == 2 || sceneloadf.buildIndex == 3 || sceneloadf.buildIndex == 5)
+        if (sceneloadf.buildIndex == 3)
         {
             Destroy(this.gameObject);
         }
-        else if (sceneloadf.buildIndex == 4)
+        else if (sceneloadf.buildIndex == 1 || sceneloadf.buildIndex == 2)
         {
             DontDestroyOnLoad(this.gameObject);
         }
