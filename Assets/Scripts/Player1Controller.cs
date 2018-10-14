@@ -106,7 +106,7 @@ public class Player1Controller : MonoBehaviour
 
             if (dashIsPressed && !iscooldown1)
             {
-                    Dash();
+                Dash();
             }
             else if (attackIsPressed)
             {
@@ -270,7 +270,7 @@ public class Player1Controller : MonoBehaviour
 
     private Vector3 GetReflected()
     {
-        Vector3 tennisVector = transform.position - ball.transform.position;
+        Vector3 tennisVector = ball.transform.position - transform.position;
         Vector3 planeTangent = Vector3.Cross(tennisVector, direction.transform.forward);
         Vector3 planeNormal = Vector3.Cross(planeTangent, tennisVector);
         Vector3 reflected = Vector3.Reflect(direction.transform.forward, planeNormal);
