@@ -26,7 +26,7 @@ using UnityEngine.UI;
 [Serializable]
 public enum GameStates
 {
-    Preload, Main
+    Main
 } //end GameStates
 public delegate void OnStateChangeHandler();
 
@@ -35,11 +35,25 @@ public class GameManager : MonoSingleton<GameManager>
     protected GameManager() { }
     public event OnStateChangeHandler OnStateChange;
 
+    public float BlocksInWall_P1;
     private int BlocksDestroyed_P1;
-    private int BlocksDestroyed_P2;
+    private float BlocksRemaining_P1;
+    private float WallHealth_P1;
 
+    public float BlocksInWall_P2;
+    private int BlocksDestroyed_P2;
+    private float BlocksRemaining_P2;
+    private float WallHealth_P2;
+
+    public float CrestsOnWall_P1;
     private int CrestsDestroyed_P1;
+    private float CrestsRemaining_P1;
+    private float CrestHealth_P1;
+
+    public float CrestsOnWall_P2;
     private int CrestsDestroyed_P2;
+    private float CrestsRemaining_P2;
+    private float CrestHealth_P2;
 
     public bool timerZero;
     private bool winnerIsPlayer1;
@@ -66,6 +80,7 @@ public class GameManager : MonoSingleton<GameManager>
 	void Update () {
         if (timerZero && !winnerSet)
         {
+            AssessWallDamage();
             DeclareWinner();
             SetEndMenu();
             winnerSet = true;
@@ -99,19 +114,25 @@ public class GameManager : MonoSingleton<GameManager>
         if (player1 == false)
         {
             CrestsDestroyed_P2++;
-            //print("P2 Crests Destroyed: " + BlocksDestroyed_P2);
         }
         else
         {
             CrestsDestroyed_P1++;
-            //print("P1 Crests Destroyed: " + BlocksDestroyed_P1);
         }
     } //end BlockDestroyed
 
     public void DeclareWinner()
     {
-        if (BlocksDestroyed_P1 == BlocksDestroyed_P2) {
-            if (CrestsDestroyed_P1 == CrestsDestroyed_P2) {
+        print("Player 1 - Total Blocks: " + BlocksInWall_P1 + ", Remaining: " + BlocksRemaining_P1 + ", Health: " + WallHealth_P1 +"%");
+        print("Player 1 - Total Crests: " + CrestsOnWall_P1 + ", Remaining: " + CrestsRemaining_P1 + ", Health: " + CrestHealth_P1 + "%");
+
+        print("Player 2 - Total Blocks: " + BlocksInWall_P2 + ", Remaining: " + BlocksRemaining_P2 + ", Health: " + WallHealth_P2 + "%");
+        print("Player 2 - Total Crests: " + CrestsOnWall_P2 + ", Remaining: " + CrestsRemaining_P2 + ", Health: " + CrestHealth_P2 + "%");
+
+        if (WallHealth_P1 == WallHealth_P2)
+        {
+            if (CrestHealth_P1 == CrestHealth_P2)
+            {
                 print("** TIE! **");
 
                 // We will need to either:
@@ -120,24 +141,73 @@ public class GameManager : MonoSingleton<GameManager>
 
                 //winnerSet = true;
                 print(winnerIsPlayer1); //returns false - 'Defaults to P2 Win'
-            } else if (CrestsDestroyed_P1 < CrestsDestroyed_P2) {
+            }
+            else if (CrestHealth_P1 > CrestHealth_P2)
+            {
                 winnerIsPlayer1 = true;
-            } else {
+            }
+            else
+            {
                 winnerIsPlayer1 = false;
             } //end else
-  
+
             print("TIE BREAKER");
-        } else if (BlocksDestroyed_P1 < BlocksDestroyed_P2) {
+        }
+        else if (WallHealth_P1 > WallHealth_P2)
+        {
             winnerIsPlayer1 = true;
             print("** PLAYER 1 WINS! **");
-        } else {
+        }
+        else
+        {
             winnerIsPlayer1 = false;
             print("** PLAYER 2 WINS! **");
         } //end else
+
+        //if (BlocksDestroyed_P1 == BlocksDestroyed_P2) {
+        //    if (CrestsDestroyed_P1 == CrestsDestroyed_P2) {
+        //        print("** TIE! **");
+
+        //        // We will need to either:
+        //        // A) Declare an official tie through UI (both knights play defeat animation)
+        //        // B) Reset the Players and the Ball to start positions and relaunch ball for a tiebreaker. 
+
+        //        //winnerSet = true;
+        //        print(winnerIsPlayer1); //returns false - 'Defaults to P2 Win'
+        //    } else if (CrestsDestroyed_P1 < CrestsDestroyed_P2) {
+        //        winnerIsPlayer1 = true;
+        //    } else {
+        //        winnerIsPlayer1 = false;
+        //    } //end else
+
+        //    print("TIE BREAKER");
+        //} else if (BlocksDestroyed_P1 < BlocksDestroyed_P2) {
+        //    winnerIsPlayer1 = true;
+        //    print("** PLAYER 1 WINS! **");
+        //} else {
+        //    winnerIsPlayer1 = false;
+        //    print("** PLAYER 2 WINS! **");
+        //} //end else
     } //CompareBlocksDestroyed
 
-    private void SetEndMenu()
-    {
+    public void AssessWallDamage() {
+
+        BlocksRemaining_P1 = BlocksInWall_P1 - BlocksDestroyed_P1;
+        BlocksRemaining_P2 = BlocksInWall_P2 - BlocksDestroyed_P2;
+
+        CrestsRemaining_P1 = CrestsOnWall_P1 - CrestsDestroyed_P1;
+        CrestsRemaining_P2 = CrestsOnWall_P2 - CrestsDestroyed_P2;
+
+        WallHealth_P1 = BlocksRemaining_P1 / BlocksInWall_P1;
+        WallHealth_P2 = BlocksRemaining_P2 / BlocksInWall_P2;
+
+        CrestHealth_P1 = CrestsRemaining_P1 / CrestsOnWall_P1;
+        CrestHealth_P2 = CrestsRemaining_P2 / CrestsOnWall_P2;
+
+        //return float;
+    } //end AssessWallDamage
+
+    private void SetEndMenu() {
         string winner;
 
         if (winnerIsPlayer1) {
