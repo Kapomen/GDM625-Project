@@ -9,6 +9,7 @@ TagManager:
   - Block
   - Pickup
   - Environment
+  - waterpickup
   layers:
   - Default
   - TransparentFX
