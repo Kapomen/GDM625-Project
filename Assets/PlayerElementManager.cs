@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerElementManager : MonoBehaviour {
 
-    private string fire = "Fire";
-    private string earth = "Earth";
-    private string water = "Water";
+    private string fire = "fire";
+    private string earth = "earth";
+    private string water = "water";
 
     private string slot1;
     private bool slot1Set;
@@ -56,8 +56,32 @@ public class PlayerElementManager : MonoBehaviour {
 
     private void CastSpell ()
     {
-        print("SPELL CASTED - Slot 1: " + slot1 + ", Slot 2: " + slot2);
+        if ((slot1 == "fire" && slot2 == "earth") || (slot1 == "earth" && slot2 == "fire"))
+        {
+            print("Spell 1");
+        }
+        else if ((slot1 == "fire" && slot2 == "water") || (slot1 == "water" && slot2 == "fire"))
+        {
+            print("Spell 2");
+        }
+        else if ((slot1 == "earth" && slot2 == "water") || (slot1 == "water" && slot2 == "earth"))
+        {
+            print("Spell 3");
+        }
+        else if (slot1 == "fire" && slot2 == "fire")
+        {
+            print("Spell 4 - FireBall");
+        }
+        else if (slot1 == "earth" && slot2 == "earth")
+        {
+            print("Spell 5 - FortifyWall");
+        }
+        else if (slot1 == "water" && slot2 == "water")
+        {
+            print("Spell 6 - IceFloor");
+        }
 
+        print("SPELL CASTED - Slot 1: " + slot1 + ", Slot 2: " + slot2);
         ClearElementSlots();
     } //end CastSpell
 
@@ -68,7 +92,7 @@ public class PlayerElementManager : MonoBehaviour {
         slot1Set = false;
         slot2Set = false;
 
-        print("SLOTS CLEARED - Slot 1: " + slot1 + ", Slot 2: " + slot2);
+        //print("SLOTS CLEARED - Slot 1: " + slot1 + ", Slot 2: " + slot2);
     } //end ClearElementSlots
 
     private void OnTriggerEnter(Collider col)
@@ -78,7 +102,7 @@ public class PlayerElementManager : MonoBehaviour {
         if (otherTag == "Element_Fire" || otherTag == "Element_Earth" || otherTag == "Element_Water")
         {
             PickupElement(otherTag);
-            print(otherTag);
+            //print(otherTag);
         }
     } //end OnTriggerEnter
 
