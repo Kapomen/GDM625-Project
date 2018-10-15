@@ -13,7 +13,7 @@ public class Block : MonoBehaviour {
     // Use this for initialization
     void Start () {
         CheckPlayer();
-        if (isPlayer1Block) {
+        if (!isPlayer1Block) {
             elementSpawner = GameObject.Find("SpawnArea (P1)"); 
         } else {
             elementSpawner = GameObject.Find("SpawnArea (P2)");

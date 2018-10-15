@@ -15,13 +15,10 @@ public class SpellManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //IceFloorGenerator player1spawn = floorSpawner.GetComponent<IceFloorGenerator>();
-        //player1spawn.SpawnIceFloor();
 	}
 
     public void FreezeFloor ()
     {
-        print("FREEZE FLOOR");
         iceGenerator.SpawnIceFloor();
     }
 
