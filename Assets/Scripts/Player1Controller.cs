@@ -288,17 +288,16 @@ public class Player1Controller : MonoBehaviour
         return power;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision col)
     {
-        if (collision.collider.tag == "Ball")
+        if (col.collider.tag == "Ball")
         {
             float power = GetPower();
             if (power > 0)
             {
                 Rigidbody rb = ball.GetComponent<Rigidbody>();
-                rb.velocity = GetReflected() * (power*0.8f);
+                rb.velocity = GetReflected() * (power * 0.8f);
             }
         }
-
     }
 }//end Player1Controller class

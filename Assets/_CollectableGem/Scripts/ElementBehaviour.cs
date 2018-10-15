@@ -22,11 +22,14 @@ public class ElementBehaviour : MonoBehaviour
 	//	durationOfCollectedParticleSystem = collectedParticleSystem.GetComponent<ParticleSystem>().main.duration;
 	//} //end OnEnable
 
-	void OnTriggerEnter(Collider theCollider)
+	void OnTriggerEnter(Collider col)
 	{
-		if (theCollider.CompareTag ("Player")) {
+		if (col.CompareTag ("Player")) {
+            //col.gameObject.GetComponent<>
             ElementCollected ();
+
 		}
+
 	} //end OnTriggerEnter
 
 	void ElementCollected()

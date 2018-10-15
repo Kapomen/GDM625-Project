@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player1Spell : MonoBehaviour {
-    public int pickupwater;
+    public int water;
 
 	// Use this for initialization
 	void Start () {
@@ -16,18 +16,18 @@ public class Player1Spell : MonoBehaviour {
 
         IceFloorGenerator player1spawn = icefloorp2.GetComponent<IceFloorGenerator>();
 
-        if (pickupwater == 2)
+        if (water == 2)
         {
             player1spawn.SpawnIceFloor();
-            pickupwater = 0;
+            water = 0;
         }
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "waterpickup")
+        if(other.tag == "Element_Water")
         {
-            pickupwater++;
+            water++;
         }
     }
 }

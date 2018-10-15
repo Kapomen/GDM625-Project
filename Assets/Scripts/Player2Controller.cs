@@ -288,9 +288,9 @@ public class Player2Controller : MonoBehaviour
         return power;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision col)
     {
-        if (collision.collider.tag == "Ball")
+        if (col.collider.tag == "Ball")
         {
             float power = GetPower();
             if (power > 0)
@@ -299,6 +299,5 @@ public class Player2Controller : MonoBehaviour
                 rb.velocity = GetReflected() * (power * 0.8f);
             }
         }
-
     }
 }//end Player2Controller class

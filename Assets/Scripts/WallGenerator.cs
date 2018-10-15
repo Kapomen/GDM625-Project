@@ -64,9 +64,37 @@ public class WallGenerator : MonoBehaviour
             GameManager.Instance.CrestsOnWall_P1 = CrestsOnWallIndex.Count;
         }
 
+        //print("Player1Wall: " + Player1Wall + ",  Blocks: " + BlocksInWallIndex.Count + ", Crests: " + CrestsOnWallIndex.Count);
+        //print("Blocks In Wall: " + BlocksInWall + ",  Crests On Wall: " + CrestsOnWall);
+    }  //end CreateWall
+
+    public IEnumerator CreateRow()
+    {
+        for (int x = 0; x < wallWidth; x++)
+        {
+            yield return new WaitForSeconds(spawnSpeed);
+
+            for (int y = 0; y < 1; y++)
+            {
+                yield return new WaitForSeconds(spawnSpeed);
+                    SetCrate(x, y);
+            } //end for loop y
+        } //end for loop x
+
+        if (!Player1Wall)
+        {
+            GameManager.Instance.BlocksInWall_P2 = BlocksInWallIndex.Count;
+            //GameManager.Instance.CrestsOnWall_P2 = CrestsOnWallIndex.Count;
+        }
+        else
+        {
+            GameManager.Instance.BlocksInWall_P1 = BlocksInWallIndex.Count;
+            //GameManager.Instance.CrestsOnWall_P1 = CrestsOnWallIndex.Count;
+        }
+
         print("Player1Wall: " + Player1Wall + ",  Blocks: " + BlocksInWallIndex.Count + ", Crests: " + CrestsOnWallIndex.Count);
         print("Blocks In Wall: " + BlocksInWall + ",  Crests On Wall: " + CrestsOnWall);
-    }  //end CreateWall
+    }  //end CreateRow
 
     private void SetCrate(int x, int y) {
         GameObject block = Instantiate(WoodCrate, Vector3.zero, WoodCrate.transform.rotation) as GameObject;
