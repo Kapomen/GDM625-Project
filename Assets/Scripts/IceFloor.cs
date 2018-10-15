@@ -34,18 +34,18 @@ public class IceFloor : MonoBehaviour {
                 insliding1 = true;
             }
         }
-        GameObject player1 = GameObject.Find("player1 2D");
+        //GameObject player1 = GameObject.Find("player1 2D");
 
-        Player1Controller player1speed = player1.GetComponent<Player1Controller>();
+        //Player1Controller player1speed = player1.GetComponent<Player1Controller>();
 
         if (insliding1 && player1onice)
         {
             DoSliding1();
         }
 
-        GameObject player2 = GameObject.Find("player2 2D");
+        //GameObject player2 = GameObject.Find("player2 2D");
 
-        Player2Controller player2speed = player2.GetComponent<Player2Controller>();
+        //Player2Controller player2speed = player2.GetComponent<Player2Controller>();
 
         if (Indelay2)
         {
