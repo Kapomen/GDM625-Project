@@ -59,6 +59,12 @@ public class GameManager : MonoSingleton<GameManager>
     private bool winnerIsPlayer1;
     public bool winnerSet;
 
+
+    public GameObject player1;
+    public GameObject player2;
+    Player1Controller player1Control;
+    Player2Controller player2Control;
+
     public GameObject resultMenu;
     public Text resultText;
 
@@ -71,6 +77,9 @@ public class GameManager : MonoSingleton<GameManager>
         timerZero = false;
         winnerSet = false;
         resultMenu.SetActive(false);
+
+        player1Control = player1.GetComponent<Player1Controller>();
+        player2Control = player2.GetComponent<Player2Controller>();
 
         sceneManager = GameObject.Find("SceneManager");
         print("GM_START");
@@ -145,10 +154,12 @@ public class GameManager : MonoSingleton<GameManager>
             else if (CrestHealth_P1 > CrestHealth_P2)
             {
                 winnerIsPlayer1 = true;
+                //SetEndPoses();
             }
             else
             {
                 winnerIsPlayer1 = false;
+                //SetEndPoses();
             } //end else
 
             print("TIE BREAKER");
@@ -156,38 +167,17 @@ public class GameManager : MonoSingleton<GameManager>
         else if (WallHealth_P1 > WallHealth_P2)
         {
             winnerIsPlayer1 = true;
+            //SetEndPoses();
+
             print("** PLAYER 1 WINS! **");
         }
         else
         {
             winnerIsPlayer1 = false;
+            //SetEndPoses();
+
             print("** PLAYER 2 WINS! **");
         } //end else
-
-        //if (BlocksDestroyed_P1 == BlocksDestroyed_P2) {
-        //    if (CrestsDestroyed_P1 == CrestsDestroyed_P2) {
-        //        print("** TIE! **");
-
-        //        // We will need to either:
-        //        // A) Declare an official tie through UI (both knights play defeat animation)
-        //        // B) Reset the Players and the Ball to start positions and relaunch ball for a tiebreaker. 
-
-        //        //winnerSet = true;
-        //        print(winnerIsPlayer1); //returns false - 'Defaults to P2 Win'
-        //    } else if (CrestsDestroyed_P1 < CrestsDestroyed_P2) {
-        //        winnerIsPlayer1 = true;
-        //    } else {
-        //        winnerIsPlayer1 = false;
-        //    } //end else
-
-        //    print("TIE BREAKER");
-        //} else if (BlocksDestroyed_P1 < BlocksDestroyed_P2) {
-        //    winnerIsPlayer1 = true;
-        //    print("** PLAYER 1 WINS! **");
-        //} else {
-        //    winnerIsPlayer1 = false;
-        //    print("** PLAYER 2 WINS! **");
-        //} //end else
     } //CompareBlocksDestroyed
 
     public void AssessWallDamage() {
@@ -236,5 +226,11 @@ public class GameManager : MonoSingleton<GameManager>
             print("EndBattle() else fired");
         }
     } //end EndBattle
+
+    private void SetEndPoses()
+    {
+        player1Control.DoEndPose(winnerIsPlayer1);
+        player2Control.DoEndPose(winnerIsPlayer1);
+    } //end SetEndPoses
 
 }  //end GameManager

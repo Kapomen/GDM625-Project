@@ -45,7 +45,7 @@ public class WallGenerator : MonoBehaviour
                 if (y == (wallHeight - 1) && playerCrestSet == false)
                 {
                     SetPlayerCrest(x, y);
-                    print("SetCrest");
+                    //print("SetCrest");
                 }
                 else
                 {

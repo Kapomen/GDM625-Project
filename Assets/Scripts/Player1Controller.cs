@@ -252,7 +252,7 @@ public class Player1Controller : MonoBehaviour
         //    iscooldown1 = true;
         //}
 
-        moveSpeed = 12;
+        moveSpeed = 10;
         iscooldown1 = true;
 
         if (horzInput < 0) SetOrKeepState(State.DashLeft);
@@ -267,6 +267,16 @@ public class Player1Controller : MonoBehaviour
         //SetOrKeepState(State.Idle);
         //gameObject.GetComponent<Renderer>().material.color = Color.red;
     } //end DoNothing
+
+    public void DoEndPose(bool winnerIsPlayer1) {
+        if (winnerIsPlayer1)
+        {
+            EnterState(State.EnterVictory);
+        } else
+        {
+            EnterState(State.EnterDefeat);
+        }
+    } //end DoEndPose 
 
     private Vector3 GetReflected()
     {
