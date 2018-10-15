@@ -14,8 +14,11 @@ public class PlayerElementManager : MonoBehaviour {
     private string slot2;
     private bool slot2Set;
 
+    SpellManager spellManager;
+
     // Use this for initialization
     void Start () {
+        spellManager = GetComponent<SpellManager>();
         ClearElementSlots();
     } //end Start
 	
@@ -70,7 +73,7 @@ public class PlayerElementManager : MonoBehaviour {
         }
         else if (slot1 == "fire" && slot2 == "fire")
         {
-            print("Spell 4 - FireBall");
+            print("Spell 4 - IgniteBall");
         }
         else if (slot1 == "earth" && slot2 == "earth")
         {
@@ -78,7 +81,8 @@ public class PlayerElementManager : MonoBehaviour {
         }
         else if (slot1 == "water" && slot2 == "water")
         {
-            print("Spell 6 - IceFloor");
+            print("Spell 6 - FreezeFloor");
+            spellManager.FreezeFloor();
         }
 
         print("SPELL CASTED - Slot 1: " + slot1 + ", Slot 2: " + slot2);

@@ -14,9 +14,9 @@ public class Block : MonoBehaviour {
     void Start () {
         CheckPlayer();
         if (isPlayer1Block) {
-            elementSpawner = GameObject.Find("ElementSpawnArea (P1)"); 
+            elementSpawner = GameObject.Find("SpawnArea (P1)"); 
         } else {
-            elementSpawner = GameObject.Find("ElementSpawnArea (P2)");
+            elementSpawner = GameObject.Find("SpawnArea (P2)");
         }
     } //end Start
 	

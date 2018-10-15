@@ -1400,7 +1400,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1828710335230980, guid: 96f815e7720d1be46a4b7c3e5d548353, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96f815e7720d1be46a4b7c3e5d548353, type: 2}
@@ -1414,8 +1414,9 @@ GameObject:
   m_Component:
   - component: {fileID: 739461344}
   - component: {fileID: 739461343}
+  - component: {fileID: 739461345}
   m_Layer: 1
-  m_Name: ElementSpawnArea (P1)
+  m_Name: SpawnArea (P1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,6 +1451,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &739461345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739461342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d81d54024da5c4fa6b343707cbba13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: -7, y: 0, z: 0}
+  size: {x: 12, y: 0, z: 10}
+  icefloor: {fileID: 1997129720413484, guid: e4bb740da852fa4459d3ea6aca0a2b7f, type: 2}
 --- !u!1 &793807723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &932704686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2353,8 +2368,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1241427992}
   - component: {fileID: 1241427991}
+  - component: {fileID: 1241427993}
   m_Layer: 1
-  m_Name: ElementSpawnArea (P2)
+  m_Name: SpawnArea (P2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2389,6 +2405,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241427993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1241427990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d81d54024da5c4fa6b343707cbba13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 7, y: 0, z: 0}
+  size: {x: 12, y: 0, z: 10}
+  icefloor: {fileID: 1997129720413484, guid: e4bb740da852fa4459d3ea6aca0a2b7f, type: 2}
 --- !u!1 &1243219136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,7 +2902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1480039270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4285,12 +4315,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1955077512}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eb6acc7d273b6a40bf9b7951cf17584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  water: 0
+  floorSpawner: {fileID: 1241427990}
 --- !u!4 &1988643005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4677015260782458, guid: c253b3ea229d2be49a8cf1fc350debd6,
