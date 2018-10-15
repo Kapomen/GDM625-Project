@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-    public bool score;
+    //public bool score;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,12 +15,12 @@ public class Projectile : MonoBehaviour {
 		
 	}
   
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Block")
         {
             score = true;
         }
-    }
+    }*/
 
 }

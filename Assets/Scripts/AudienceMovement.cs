@@ -18,16 +18,16 @@ public class AudienceMovement : MonoBehaviour {
 
     void Update()
     {
-        GameObject checkifscore = GameObject.Find("Ball");
+        //GameObject checkifscore = GameObject.Find("Ball");
 
-        Projectile isscore = checkifscore.GetComponent<Projectile>();
+        //Projectile isscore = checkifscore.GetComponent<Projectile>();
         
-        if (leftright && isscore.score)
+        if (leftright) //&& isscore.score)
         {
             leftandright();
             updown = false;
         }
-        if (updown && isscore.score)
+        if (updown)// && isscore.score)
         {
             
             upanddown();
