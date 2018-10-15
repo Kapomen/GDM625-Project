@@ -11,6 +11,8 @@ public class IceFloor : MonoBehaviour {
     public bool Indelay2;
     public bool insliding1;
     public bool insliding2;
+    public bool player1onice;
+    public bool player2onice;
 
     // Use this for initialization
     void Start () {
@@ -32,18 +34,18 @@ public class IceFloor : MonoBehaviour {
                 insliding1 = true;
             }
         }
-        GameObject player1 = GameObject.Find("player1 2D");
+        //GameObject player1 = GameObject.Find("player1 2D");
 
-        Player1Controller player1speed = player1.GetComponent<Player1Controller>();
+        //Player1Controller player1speed = player1.GetComponent<Player1Controller>();
 
-        if (insliding1)
+        if (insliding1 && player1onice)
         {
             DoSliding1();
         }
 
-        GameObject player2 = GameObject.Find("player2 2D");
+        //GameObject player2 = GameObject.Find("player2 2D");
 
-        Player2Controller player2speed = player2.GetComponent<Player2Controller>();
+        //Player2Controller player2speed = player2.GetComponent<Player2Controller>();
 
         if (Indelay2)
         {
@@ -56,7 +58,7 @@ public class IceFloor : MonoBehaviour {
                 insliding2 = true;
             }
         }
-        if (insliding2)
+        if (insliding2 && player2onice)
         {
             DoSliding2();
         }
@@ -116,10 +118,28 @@ public class IceFloor : MonoBehaviour {
         if(other.gameObject.name == "player1 2D")
         {
             Indelay1 = true;
+            player1onice = true;
         }
         if (other.gameObject.name == "player2 2D")
         {
             Indelay2 = true;
+            player2onice = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "player1 2D")
+        {
+            Indelay1 = false;
+            currenTtimer1 = 0;
+            player1onice = false;
+        }
+        if (other.gameObject.name == "player2 2D")
+        {
+            Indelay2 = false;
+            currenTtimer2 = 0;
+            player2onice = false;
         }
     }
 }

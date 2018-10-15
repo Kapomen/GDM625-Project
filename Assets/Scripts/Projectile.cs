@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
+    //public bool score;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,15 +14,13 @@ public class Projectile : MonoBehaviour {
 	void Update () {
 		
 	}
-  /*
-    private void OnCollisionEnter(Collision collision)
+  
+    /*void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "Block")
         {
-            transform.position = collision.gameObject.transform.position + new Vector3(0, 2, 0);
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            score = true;
         }
-        
     }*/
-    
+
 }

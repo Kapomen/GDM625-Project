@@ -36,7 +36,8 @@ public class TimerCounting : MonoBehaviour
             timerZero = true;
             GameManager.Instance.timerZero = true;
             timerText.text = "00" + ":" + "00";
-
+            Rigidbody rb = ball.GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
 
         if (!timerZero) {
