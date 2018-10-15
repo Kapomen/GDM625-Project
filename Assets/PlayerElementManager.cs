@@ -78,6 +78,7 @@ public class PlayerElementManager : MonoBehaviour {
         else if (slot1 == "earth" && slot2 == "earth")
         {
             print("Spell 5 - FortifyWall");
+            spellManager.FortifyWall();
         }
         else if (slot1 == "water" && slot2 == "water")
         {

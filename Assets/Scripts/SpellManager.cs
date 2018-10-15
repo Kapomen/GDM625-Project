@@ -5,17 +5,26 @@ using UnityEngine;
 public class SpellManager : MonoBehaviour {
 
     //private bool isPlayer1;
-    public GameObject floorSpawner;
+    public GameObject allyWall;
+    public GameObject enemyFloor;
     IceFloorGenerator iceGenerator;
+    WallGenerator wallGenerator;
 
 	// Use this for initialization
 	void Start () {
-        iceGenerator = floorSpawner.GetComponent<IceFloorGenerator>();
+        iceGenerator = enemyFloor.GetComponent<IceFloorGenerator>();
+        wallGenerator = allyWall.GetComponent<WallGenerator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
 	}
+
+    public void FortifyWall ()
+    {
+        //print("FORTIFY WALL");
+        wallGenerator.StartCoroutine(wallGenerator.CreateRow());
+    }
 
     public void FreezeFloor ()
     {

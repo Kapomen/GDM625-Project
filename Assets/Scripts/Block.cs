@@ -49,7 +49,7 @@ public class Block : MonoBehaviour {
             {
                 ElementGenerator elementGenerator = elementSpawner.GetComponent<ElementGenerator>();
                 elementGenerator.SpawnElement();
-                print("Element Dropped (" +elementDrop + "%)");
+                //print("Element Dropped (" +elementDrop + "%)");
             }
         }
     } //end OnCollisionEnter

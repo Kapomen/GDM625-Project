@@ -70,6 +70,7 @@ public class WallGenerator : MonoBehaviour
 
     public IEnumerator CreateRow()
     {
+        print("CREATE WALL");
         for (int x = 0; x < wallWidth; x++)
         {
             yield return new WaitForSeconds(spawnSpeed);
