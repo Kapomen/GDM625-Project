@@ -13,6 +13,7 @@ public class IceFloor : MonoBehaviour {
     public bool insliding2;
     public bool player1onice;
     public bool player2onice;
+    public float destroytime;
 
     // Use this for initialization
     void Start () {
@@ -22,7 +23,7 @@ public class IceFloor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        Destroy(gameObject, destroytime);
         if (Indelay1)
         {
             currenTtimer1 += Time.deltaTime;

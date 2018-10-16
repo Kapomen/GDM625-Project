@@ -116,3 +116,6 @@ MonoBehaviour:
   Indelay2: 0
   insliding1: 0
   insliding2: 0
+  player1onice: 0
+  player2onice: 0
+  destroytime: 30
