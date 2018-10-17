@@ -82,6 +82,7 @@ public class PlayerElementManager : MonoBehaviour {
         }
         else if (slot1 == "water" && slot2 == "water")
         {
+
             print("Spell 6 - FreezeFloor");
             spellManager.FreezeFloor();
         }
