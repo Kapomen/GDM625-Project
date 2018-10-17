@@ -20,6 +20,11 @@ public class SpellManager : MonoBehaviour {
 	void Update () {
 	}
 
+    public void IgniteBall()
+    {
+        
+    }
+
     public void FortifyWall ()
     {
         //print("FORTIFY WALL");

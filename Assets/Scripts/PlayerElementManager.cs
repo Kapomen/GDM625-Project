@@ -16,6 +16,13 @@ public class PlayerElementManager : MonoBehaviour {
 
     SpellManager spellManager;
 
+    //public GameObject Spell1Icon;
+    //public GameObject Spell2Icon;
+    //public GameObject Spell3Icon;
+    public GameObject IgniteBallIcon;
+    public GameObject FortifyWallIcon;
+    public GameObject FreezeFloorIcon;
+
     // Use this for initialization
     void Start () {
         spellManager = GetComponent<SpellManager>();
@@ -57,34 +64,57 @@ public class PlayerElementManager : MonoBehaviour {
         }
     } //end PickupElement
 
+    IEnumerator LateCall()
+    {
+        yield return new WaitForSeconds(1);
+        //Spell1Icon.SetActive(true);
+        //Spell2Icon.SetActive(true);
+        //Spell3Icon.SetActive(true);
+        IgniteBallIcon.SetActive(true);
+        FortifyWallIcon.SetActive(true);
+        FreezeFloorIcon.SetActive(true);
+    }
+
     private void CastSpell ()
     {
         if ((slot1 == "fire" && slot2 == "earth") || (slot1 == "earth" && slot2 == "fire"))
         {
+            //Spell1Icon.SetActive(true);
             print("Spell 1");
+            StartCoroutine(LateCall());
         }
         else if ((slot1 == "fire" && slot2 == "water") || (slot1 == "water" && slot2 == "fire"))
         {
+            //Spell2Icon.SetActive(true);
             print("Spell 2");
+            StartCoroutine(LateCall());
         }
         else if ((slot1 == "earth" && slot2 == "water") || (slot1 == "water" && slot2 == "earth"))
         {
+            //Spell3Icon.SetActive(true);
             print("Spell 3");
+            StartCoroutine(LateCall());
         }
         else if (slot1 == "fire" && slot2 == "fire")
         {
+            IgniteBallIcon.SetActive(false);
             print("Spell 4 - IgniteBall");
+            spellManager.IgniteBall();
+            StartCoroutine(LateCall());
         }
         else if (slot1 == "earth" && slot2 == "earth")
         {
+            FortifyWallIcon.SetActive(false);
             print("Spell 5 - FortifyWall");
             spellManager.FortifyWall();
+            StartCoroutine(LateCall());
         }
         else if (slot1 == "water" && slot2 == "water")
         {
-
+            FreezeFloorIcon.SetActive(false);
             print("Spell 6 - FreezeFloor");
             spellManager.FreezeFloor();
+            StartCoroutine(LateCall());
         }
 
         print("SPELL CASTED - Slot 1: " + slot1 + ", Slot 2: " + slot2);
@@ -97,7 +127,6 @@ public class PlayerElementManager : MonoBehaviour {
         slot2 = string.Empty;
         slot1Set = false;
         slot2Set = false;
-
         //print("SLOTS CLEARED - Slot 1: " + slot1 + ", Slot 2: " + slot2);
     } //end ClearElementSlots
 
