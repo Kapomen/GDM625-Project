@@ -4235,6 +4235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1180488432}
   - component: {fileID: 1180488433}
+  - component: {fileID: 1180488434}
   m_Layer: 0
   m_Name: cloud
   m_TagString: Untagged
@@ -4301,6 +4302,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1180488434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180488431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b3460fec73237459fe0ab4eabde542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delta: 0.5
+  speed: 0.5
+  leftright: 1
+  updown: 0
 --- !u!1 &1205502648
 GameObject:
   m_ObjectHideFlags: 0
@@ -5209,6 +5225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394500775}
   - component: {fileID: 1394500776}
+  - component: {fileID: 1394500777}
   m_Layer: 0
   m_Name: cloud (1)
   m_TagString: Untagged
@@ -5275,6 +5292,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1394500777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1394500774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b3460fec73237459fe0ab4eabde542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delta: 0.5
+  speed: 0.5
+  leftright: 1
+  updown: 0
 --- !u!1 &1397854933
 GameObject:
   m_ObjectHideFlags: 0
