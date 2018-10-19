@@ -14,6 +14,13 @@ public class PlayerElementManager : MonoBehaviour {
     private string slot2;
     private bool slot2Set;
 
+    public GameObject fireslot1;
+    public GameObject waterslot1;
+    public GameObject earthslot1;
+    public GameObject fireslot2;
+    public GameObject waterslot2;
+    public GameObject earthslot2;
+
     SpellManager spellManager;
 
     //public GameObject Spell1Icon;
@@ -23,10 +30,17 @@ public class PlayerElementManager : MonoBehaviour {
     public GameObject FortifyWallIcon;
     public GameObject FreezeFloorIcon;
 
+
     // Use this for initialization
     void Start () {
         spellManager = GetComponent<SpellManager>();
         ClearElementSlots();
+        fireslot1.SetActive(false);
+        waterslot1.SetActive(false);
+        earthslot1.SetActive(false);
+        fireslot2.SetActive(false);
+        waterslot2.SetActive(false);
+        earthslot2.SetActive(false);
     } //end Start
 	
 	// Update is called once per frame
@@ -52,10 +66,45 @@ public class PlayerElementManager : MonoBehaviour {
         {
             slot1 = element;
             slot1Set = true;
+            if(slot1 == "fire")
+            {
+                fireslot1.SetActive(true);
+                waterslot1.SetActive(false);
+                earthslot1.SetActive(false);
+            }else if(slot1 == "earth")
+            {
+                fireslot1.SetActive(false);
+                waterslot1.SetActive(false);
+                earthslot1.SetActive(true);
+            }
+            else if(slot1 == "water")
+            {
+                fireslot1.SetActive(false);
+                waterslot1.SetActive(true);
+                earthslot1.SetActive(false);
+            }
         } else
         {
             slot2 = element;
             slot2Set = true;
+            if (slot2 == "fire")
+            {
+                fireslot2.SetActive(true);
+                waterslot2.SetActive(false);
+                earthslot2.SetActive(false);
+            }
+            else if (slot2 == "earth")
+            {
+                fireslot2.SetActive(false);
+                waterslot2.SetActive(false);
+                earthslot2.SetActive(true);
+            }
+            else if (slot2 == "water")
+            {
+                fireslot2.SetActive(false);
+                waterslot2.SetActive(true);
+                earthslot2.SetActive(false);
+            }
         }
 
         if (slot1Set & slot2Set)
@@ -74,6 +123,8 @@ public class PlayerElementManager : MonoBehaviour {
         FortifyWallIcon.SetActive(true);
         FreezeFloorIcon.SetActive(true);
     }
+
+    
 
     private void CastSpell ()
     {
@@ -127,6 +178,12 @@ public class PlayerElementManager : MonoBehaviour {
         slot2 = string.Empty;
         slot1Set = false;
         slot2Set = false;
+        fireslot1.SetActive(false);
+        waterslot1.SetActive(false);
+        earthslot1.SetActive(false);
+        fireslot2.SetActive(false);
+        waterslot2.SetActive(false);
+        earthslot2.SetActive(false);
         //print("SLOTS CLEARED - Slot 1: " + slot1 + ", Slot 2: " + slot2);
     } //end ClearElementSlots
 
