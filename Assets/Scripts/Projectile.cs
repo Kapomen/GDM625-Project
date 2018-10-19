@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(AudioSource))]
+
 public class Projectile : MonoBehaviour {
 
     public AudioClip bounce;
