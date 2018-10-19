@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197477515519584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4114328125998928}
@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8217340dde5c64e9891fcb62afd31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalballSprite: {fileID: 0}
+  fireballSprite: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!135 &135645489559448260
 SphereCollider:
   m_ObjectHideFlags: 1
