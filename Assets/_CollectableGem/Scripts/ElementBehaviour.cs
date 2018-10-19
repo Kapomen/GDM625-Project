@@ -9,12 +9,13 @@ public class ElementBehaviour : MonoBehaviour
 	public GameObject collectedParticleSystem;
 	//public CircleCollider2D gemCollider2D;
     public SphereCollider gemCollider3D;
-
+    
     private float durationOfCollectedParticleSystem;
 
     void Start()
     {
         durationOfCollectedParticleSystem = collectedParticleSystem.GetComponent<ParticleSystem>().main.duration;
+        
     } //end OnEnable
 
  //   void OnEnable()
@@ -48,7 +49,10 @@ public class ElementBehaviour : MonoBehaviour
         //}
         //else
         //{
-            Destroy(gameObject);
+        
+        Destroy(gameObject);
+
         //}
     } //end DeactivateElement
+    
 } //end ElementBehavior class

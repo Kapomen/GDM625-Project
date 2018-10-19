@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 222722522504885746}
   - component: {fileID: 114089870693204768}
   - component: {fileID: 114695258640953598}
+  - component: {fileID: 114091496602781496}
   m_Layer: 5
   m_Name: back
   m_TagString: Untagged
@@ -108,6 +109,7 @@ GameObject:
   - component: {fileID: 222812603963963042}
   - component: {fileID: 114646220683232174}
   - component: {fileID: 114255717157252458}
+  - component: {fileID: 114944701853309114}
   m_Layer: 5
   m_Name: restart
   m_TagString: Untagged
@@ -192,6 +194,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114091496602781496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664390825321142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cd5419f7af31949be3dae1b959d73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d6084144e17b7124baa51dbdde8c2f2e, type: 3}
 --- !u!114 &114255717157252458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,6 +436,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: TIME OUT!
+--- !u!114 &114944701853309114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734143254038928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cd5419f7af31949be3dae1b959d73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d6084144e17b7124baa51dbdde8c2f2e, type: 3}
 --- !u!114 &114998141131817622
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class Player2Controller : MonoBehaviour
 {
 
@@ -60,7 +62,9 @@ public class Player2Controller : MonoBehaviour
     public bool iscooldown1;
     public float dashtimer1 = 0;
     public float dashcooldown = 3f;
-
+    public AudioClip HitBall;
+    public AudioClip PlayerDash;
+    AudioSource audioSource;
     //private Animator animator;
 
 
@@ -70,6 +74,7 @@ public class Player2Controller : MonoBehaviour
         //PlayerIsAttacking = false;
         animator = GetComponentInChildren<Animator>();
         defaultScale = transform.localScale;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -231,7 +236,8 @@ public class Player2Controller : MonoBehaviour
         if (ballDistance <= 3 & ballDistance >= 0)
         {
             Rigidbody rb = ball.GetComponent<Rigidbody>();
-            rb.velocity = GetReflected() * power;
+            rb.velocity = GetReflected() * -power;
+            audioSource.PlayOneShot(HitBall);
         }
 
 
@@ -254,7 +260,7 @@ public class Player2Controller : MonoBehaviour
 
         moveSpeed = 10;
         iscooldown1 = true;
-
+        audioSource.PlayOneShot(PlayerDash);
         if (horzInput < 0) SetOrKeepState(State.DashLeft);
         else if (horzInput > 0) SetOrKeepState(State.DashRight);
         else return false;
