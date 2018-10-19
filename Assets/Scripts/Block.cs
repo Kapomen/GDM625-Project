@@ -10,6 +10,8 @@ public class Block : MonoBehaviour {
 
     private GameObject elementSpawner;
 
+    AudioSource blockShuffle;
+
     // Use this for initialization
     void Start () {
         CheckPlayer();
@@ -18,6 +20,7 @@ public class Block : MonoBehaviour {
         } else {
             elementSpawner = GameObject.Find("SpawnArea (P2)");
         }
+        blockShuffle = GetComponent<AudioSource>();
     } //end Start
 	
 	// Update is called once per frame
@@ -33,7 +36,8 @@ public class Block : MonoBehaviour {
 
     private void OnCollisionExit(Collision col)
     {
-        if (col.gameObject.tag == "Player") {
+        if (col.gameObject.tag == "Player")
+        {
             //print("block-player collision");
 
             //check for PlayerIsAttacking = true
@@ -45,12 +49,18 @@ public class Block : MonoBehaviour {
             GameManager.Instance.BlockDestroyed(isPlayer1Block);
 
             float elementDrop = Random.Range(0.0f, 1.0f);
-            if(elementDrop <= ElementDropRate)
+            if (elementDrop <= ElementDropRate)
             {
                 ElementGenerator elementGenerator = elementSpawner.GetComponent<ElementGenerator>();
                 elementGenerator.SpawnElement();
                 //print("Element Dropped (" +elementDrop + "%)");
             }
         }
-    } //end OnCollisionEnter
-} //end Block class
+        if (col.gameObject.tag == "Block")
+        {
+            blockShuffle.Play();
+        }
+        //end OnCollisionEnter
+    }
+} 
+    //end Block class
