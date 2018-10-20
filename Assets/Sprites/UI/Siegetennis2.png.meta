@@ -137,7 +137,7 @@ TextureImporter:
       name: Siegetennis2_2
       rect:
         serializedVersion: 2
-        x: 311
+        x: 312
         y: 0
         width: 151
         height: 167
@@ -197,7 +197,7 @@ TextureImporter:
       name: Siegetennis2_5
       rect:
         serializedVersion: 2
-        x: 776
+        x: 777
         y: 0
         width: 151
         height: 167
@@ -237,7 +237,7 @@ TextureImporter:
       name: Siegetennis2_7
       rect:
         serializedVersion: 2
-        x: 1086
+        x: 1087
         y: 0
         width: 151
         height: 167
@@ -257,7 +257,7 @@ TextureImporter:
       name: Siegetennis2_8
       rect:
         serializedVersion: 2
-        x: 1241
+        x: 1242
         y: 0
         width: 151
         height: 167
@@ -277,7 +277,7 @@ TextureImporter:
       name: Siegetennis2_9
       rect:
         serializedVersion: 2
-        x: 1398
+        x: 1397
         y: 0
         width: 151
         height: 167
