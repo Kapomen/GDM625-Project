@@ -26,11 +26,11 @@ public class CountdownTimer : MonoBehaviour {
         if (timeLeft <= 0)
         {
             StopCoroutine("LoseTime");
-            countdownText.text = "GO!";
+            countdownText.text = "SIEGE!";
             battlestarts = true;
         }
 
-        if(countdownText.text == "GO!")
+        if(countdownText.text == "SIEGE!")
         {
             intervals += Time.deltaTime;
             if(intervals >= 1f)

@@ -56,7 +56,7 @@ public class GameManager : MonoSingleton<GameManager>
     private float CrestHealth_P2;
 
     public bool timerZero;
-    private bool winnerIsPlayer1;
+    public bool winnerIsPlayer1;
     public bool winnerSet;
 
 

@@ -18,6 +18,7 @@ public class SelectionSound : MonoBehaviour {
 	}
 	
 	void playSound () {
+        print("sound played: " + sound);
         source.PlayOneShot(sound);
 	}
 }

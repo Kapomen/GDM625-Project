@@ -10,9 +10,6 @@ public class Player2Controller : MonoBehaviour
     Animator animator;
     Vector3 defaultScale;
 
-    //private bool PlayerIsAttacking;
-    //private bool PlayerIsDashing;
-
     float stateStartTime;
 
     float timeInState
@@ -65,6 +62,9 @@ public class Player2Controller : MonoBehaviour
     public AudioClip HitBall;
     public AudioClip PlayerDash;
     AudioSource audioSource;
+
+    private bool WinnerIsPlayer1;
+    private bool endPoseSet;
     //private Animator animator;
 
 
@@ -128,7 +128,14 @@ public class Player2Controller : MonoBehaviour
             }
 
             ContinueState();
-        }
+        } else if (GameManager.Instance.winnerSet && !endPoseSet)
+        {
+            WinnerIsPlayer1 = GameManager.Instance.winnerIsPlayer1;
+            DoEndPose(WinnerIsPlayer1);
+
+            endPoseSet = true;
+            ContinueState();
+        } 
 
     } //end Update
 
@@ -180,6 +187,12 @@ public class Player2Controller : MonoBehaviour
             case State.EnterVictory:
                 animator.Play(M_EnterVictoryAnim);
                 break;
+            case State.Defeat:
+                animator.Play(M_DefeatAnim);
+                break;
+            case State.Victory:
+                animator.Play(M_VictoryAnim);
+                break;
         } //end switch
 
         this.state = state;
@@ -209,6 +222,13 @@ public class Player2Controller : MonoBehaviour
             case State.DashRight:
             case State.DashVert:
                 if (!Dash()) EnterState(State.Idle);
+                break;
+
+            case State.EnterDefeat:
+                EnterState(State.Defeat);
+                break;
+            case State.EnterVictory:
+                EnterState(State.Victory);
                 break;
         } //emd switch
     } //end ContinueState
@@ -276,13 +296,26 @@ public class Player2Controller : MonoBehaviour
 
     public void DoEndPose(bool winnerIsPlayer1)
     {
-        if (winnerIsPlayer1)
+        //Invert if bool for player 1
+        if (!winnerIsPlayer1)
         {
-            EnterState(State.EnterVictory);
+            if (endPoseSet)
+            {
+                EnterState(State.Victory);
+            } else
+            {
+                EnterState(State.EnterVictory);
+            }
         }
         else
         {
-            EnterState(State.EnterDefeat);
+            if (endPoseSet)
+            {
+                EnterState(State.Defeat);
+            } else
+            {
+                EnterState(State.EnterDefeat);
+            }
         }
     } //end DoEndPose 
 
