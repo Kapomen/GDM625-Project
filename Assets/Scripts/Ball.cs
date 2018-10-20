@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour {
     //public float thrust;
     //public Rigidbody rb;
     public Sprite normalballSprite;
-    public Sprite fireballSprite; // Drag your first sprite here
+    public Sprite fireballSprite;
     public SpriteRenderer spriteRenderer;
     void Start()
     {

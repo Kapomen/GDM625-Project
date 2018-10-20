@@ -1,21 +1,17 @@
 fileFormatVersion: 2
-guid: d8d608ff9f2c2a94fb0fdb0cdb21e0ca
+guid: 37f432cbcd5838f4cbb380508d268413
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Fvictory_0
-    21300002: Fvictory_1
-    21300004: Fvictory_2
-    21300006: Fvictory_3
-    21300008: Fvictory_4
-    21300010: Fvictory_5
-    21300012: Fvictory_6
-    21300014: Fvictory_7
-    21300016: Fvictory_8
-    21300018: Fvictory_9
-    21300020: Fvictory_10
-    21300022: Fvictory_11
-    21300024: Fvictory_12
-    21300026: Fvictory_13
+    21300000: Siegetennis2_0
+    21300002: Siegetennis2_1
+    21300004: Siegetennis2_2
+    21300006: Siegetennis2_3
+    21300008: Siegetennis2_4
+    21300010: Siegetennis2_5
+    21300012: Siegetennis2_6
+    21300014: Siegetennis2_7
+    21300016: Siegetennis2_8
+    21300018: Siegetennis2_9
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -45,12 +41,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -59,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,281 +94,201 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fvictory_0
+      name: Siegetennis2_0
       rect:
         serializedVersion: 2
-        x: 19
+        x: 2
         y: 0
-        width: 34
-        height: 73
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 197f5c8d485dec646b870bc993c0c84d
+      spriteID: e46133a0012c0b945b19d0dba97fc815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_1
+      name: Siegetennis2_1
       rect:
         serializedVersion: 2
-        x: 90
+        x: 157
         y: 0
-        width: 33
-        height: 55
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5132aff3390e6394ab4f31a8379c84e7
+      spriteID: f90c72f811c1e1e4091c2748af148a39
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_2
+      name: Siegetennis2_2
       rect:
         serializedVersion: 2
-        x: 138
+        x: 311
         y: 0
-        width: 51
-        height: 53
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68107915bfa53f04182006334c8fc009
+      spriteID: 04c4ebd0cdecc604d95a9d561e6368f6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_3
+      name: Siegetennis2_3
       rect:
         serializedVersion: 2
-        x: 207
+        x: 467
         y: 0
-        width: 51
-        height: 49
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74b10d0d13906384997bc5a7d902cd6b
+      spriteID: d71a7a22a85403c4e8a35ef8821a956d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_4
+      name: Siegetennis2_4
       rect:
         serializedVersion: 2
-        x: 276
+        x: 622
         y: 0
-        width: 51
-        height: 51
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dda652680eb602c46808d0bab1d7c057
+      spriteID: f1ca80c11441a5541a088615a9c7d421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_5
+      name: Siegetennis2_5
       rect:
         serializedVersion: 2
-        x: 345
+        x: 776
         y: 0
-        width: 51
-        height: 49
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60711f82bca57cd4f89ec12977da2ca8
+      spriteID: 615c689e91572fd43abb01d145864385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_6
+      name: Siegetennis2_6
       rect:
         serializedVersion: 2
-        x: 414
+        x: 932
         y: 0
-        width: 51
-        height: 51
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bbaef08e9427aa4aa1cd0fe9eddc6ed
+      spriteID: 5235ee3528e28674f8a385cc9a0c474a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_7
+      name: Siegetennis2_7
       rect:
         serializedVersion: 2
-        x: 483
+        x: 1086
         y: 0
-        width: 51
-        height: 49
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f71ae2213cc4f94984ebc638d71a7e9
+      spriteID: 6d4dc84fd3b63d248a1bb07f937efbb5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_8
+      name: Siegetennis2_8
       rect:
         serializedVersion: 2
-        x: 552
+        x: 1241
         y: 0
-        width: 51
-        height: 51
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c57d6f0e298316d46bd10dbd669afe76
+      spriteID: aa4eeabdc8f69ee438ec01c30c177ad4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fvictory_9
+      name: Siegetennis2_9
       rect:
         serializedVersion: 2
-        x: 621
+        x: 1398
         y: 0
-        width: 51
-        height: 49
+        width: 151
+        height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 249d1d3273fc5c04ca507ba602788d69
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fvictory_10
-      rect:
-        serializedVersion: 2
-        x: 690
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdfb44183ac188e418d923db824aa365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fvictory_11
-      rect:
-        serializedVersion: 2
-        x: 759
-        y: 0
-        width: 51
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c355d75d9ff1ed4db557967bae2ef7d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fvictory_12
-      rect:
-        serializedVersion: 2
-        x: 828
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 81dd8c1e77448f2469fe15d99666308d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fvictory_13
-      rect:
-        serializedVersion: 2
-        x: 897
-        y: 0
-        width: 51
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6aeb58fa990816c439347b8085268047
+      spriteID: 30be27dd979f8bf44a30281db33d8370
       vertices: []
       indices: 
       edges: []
@@ -380,7 +296,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e32da91cd48a29c4b836d0622dc0e7d5
+    spriteID: e89671f63b83ea648814b2fdc238fd6a
     vertices: []
     indices: 
     edges: []
